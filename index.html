@@ -21,8 +21,9 @@
       --card:     #FFFFFF;
       --accent:   #2E5BFF;
       --accent-soft: #E8EEFF;
-      --grid-line: rgba(46,91,255,.07);
-      --glow: rgba(46,91,255,.16);
+      --grid-line: #F0F0F0;
+      --glow: #D5C5FF;
+      --aurora: rgba(140,138,220,.55);
       --radius:   14px;
       --shadow:   0 1px 2px rgba(16,28,46,.06), 0 8px 32px rgba(16,28,46,.09);
     }
@@ -35,7 +36,7 @@
       background-image:
         linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
         linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-      background-size:4rem 4rem;
+      background-size:6rem 4rem;
       -webkit-font-smoothing:antialiased;
     }
     h1,h2,h3,.q{ font-family:'Questrial', sans-serif; font-weight:400; line-height:1.15; }
@@ -126,6 +127,7 @@
       position:relative; overflow:hidden; text-align:center;
       /* Hintergrundbild: assets/hero.jpg – Fallback ist ein dunkler Verlauf */
       background:
+        radial-gradient(65% 55% at 50% 0%, var(--aurora), transparent 72%),
         linear-gradient(rgba(7,12,21,.72), rgba(7,12,21,.82)),
         url('assets/hero.jpg') center/cover no-repeat,
         linear-gradient(160deg, #0C1626, #16263E);
