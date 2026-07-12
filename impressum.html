@@ -81,7 +81,12 @@
     .eyebrow::before{ content:''; width:22px; height:2px; background:var(--accent); }
     .page-header h1{ font-size:clamp(2rem, 5vw, 2.8rem); }
 
-    .legal-body{ padding:56px 0 100px; display:flex; flex-direction:column; gap:40px; }
+    main.wrap{
+      position:relative;
+      background-image: radial-gradient(560px 380px at 4% 100%, var(--glow), transparent 70%);
+      background-repeat:no-repeat;
+    }
+    .legal-body{ padding:56px 0 100px; display:flex; flex-direction:column; gap:40px; position:relative; }
     .legal-section h2{
       font-family:'Inter'; font-size:.76rem; font-weight:700; letter-spacing:.1em;
       text-transform:uppercase; color:var(--muted); margin-bottom:16px;

@@ -23,7 +23,6 @@
       --accent-soft: #E8EEFF;
       --grid-line: #F0F0F0;
       --glow: #D5C5FF;
-      --aurora: rgba(140,138,220,.55);
       --radius:   14px;
       --shadow:   0 1px 2px rgba(16,28,46,.06), 0 8px 32px rgba(16,28,46,.09);
     }
@@ -127,7 +126,6 @@
       position:relative; overflow:hidden; text-align:center;
       /* Hintergrundbild: assets/hero.jpg – Fallback ist ein dunkler Verlauf */
       background:
-        radial-gradient(65% 55% at 50% 0%, var(--aurora), transparent 72%),
         linear-gradient(rgba(7,12,21,.72), rgba(7,12,21,.82)),
         url('assets/hero.jpg') center/cover no-repeat,
         linear-gradient(160deg, #0C1626, #16263E);
@@ -209,7 +207,11 @@
     @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:20px; } }
 
     /* ── Leistungen ── */
-    .services{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .services{
+      position:relative; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+      background-image: radial-gradient(560px 380px at 2% 105%, var(--glow), transparent 70%);
+      background-repeat:no-repeat;
+    }
     .cards{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-top:48px; }
     .card{
       background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -241,7 +243,16 @@
     .step:last-child::after{ display:none; }
 
     /* ── Projekte ── */
-    .projects{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    #vorgehen{
+      position:relative;
+      background-image: radial-gradient(560px 380px at 98% -8%, var(--glow), transparent 70%);
+      background-repeat:no-repeat;
+    }
+    .projects{
+      position:relative; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+      background-image: radial-gradient(560px 380px at 100% 105%, var(--glow), transparent 70%);
+      background-repeat:no-repeat;
+    }
     .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:48px; }
     .proj{
       background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
