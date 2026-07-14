@@ -8,34 +8,168 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&family=Allura&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <style>
     :root{
-      --ink:      #0D1728;
-      --slate:    #4C5A70;
-      --muted:    #798A9F;
-      --line:     #DCE4F5;
-      --bg:       #FFFFFF;
-      --bg-soft:  #F1F5FD;
-      --card:     #FFFFFF;
+      --galaxy-bg:
+        radial-gradient(2.15px 2.15px at 20.80% 41.49%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(1.66px 1.66px at 10.73% 10.11%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(2.20px 2.20px at 51.51% 10.07%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.83px 1.83px at 49.76% 35.69%, rgba(255,255,255,0.98), transparent 70%),
+        radial-gradient(2.15px 2.15px at 23.24% 62.89%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(2.29px 2.29px at 65.50% 13.53%, rgba(255,255,255,0.83), transparent 70%),
+        radial-gradient(1.70px 1.70px at 78.79% 7.98%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(2.37px 2.37px at 44.17% 32.71%, rgba(255,255,255,1.00), transparent 70%),
+        radial-gradient(1.67px 1.67px at 52.93% 35.22%, rgba(255,255,255,0.91), transparent 70%),
+        radial-gradient(2.00px 2.00px at 21.70% 1.34%, rgba(255,255,255,0.98), transparent 70%),
+        radial-gradient(2.18px 2.18px at 69.78% 81.39%, rgba(255,255,255,0.82), transparent 70%),
+        radial-gradient(2.13px 2.13px at 26.96% 13.86%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(2.02px 2.02px at 79.25% 49.73%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(2.40px 2.40px at 63.20% 12.20%, rgba(255,255,255,0.91), transparent 70%),
+        radial-gradient(1.51px 1.51px at 35.01% 82.97%, rgba(255,255,255,0.55), transparent 70%),
+        radial-gradient(1.43px 1.43px at 14.40% 55.34%, rgba(255,255,255,0.74), transparent 70%),
+        radial-gradient(1.55px 1.55px at 14.62% 67.62%, rgba(255,255,255,0.90), transparent 70%),
+        radial-gradient(1.48px 1.48px at 82.71% 70.22%, rgba(255,255,255,0.66), transparent 70%),
+        radial-gradient(1.09px 1.09px at 63.53% 5.75%, rgba(255,255,255,0.73), transparent 70%),
+        radial-gradient(1.10px 1.10px at 89.73% 97.44%, rgba(255,255,255,0.84), transparent 70%),
+        radial-gradient(1.26px 1.26px at 74.97% 90.64%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(1.03px 1.03px at 98.22% 24.26%, rgba(255,255,255,0.79), transparent 70%),
+        radial-gradient(1.41px 1.41px at 82.38% 74.91%, rgba(255,255,255,0.75), transparent 70%),
+        radial-gradient(1.28px 1.28px at 88.54% 92.29%, rgba(255,255,255,0.72), transparent 70%),
+        radial-gradient(1.34px 1.34px at 99.78% 41.18%, rgba(255,255,255,0.55), transparent 70%),
+        radial-gradient(1.50px 1.50px at 81.26% 97.01%, rgba(255,255,255,0.59), transparent 70%),
+        radial-gradient(1.28px 1.28px at 78.07% 72.52%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(1.30px 1.30px at 76.30% 40.85%, rgba(255,255,255,0.58), transparent 70%),
+        radial-gradient(1.02px 1.02px at 99.19% 93.24%, rgba(255,255,255,0.72), transparent 70%),
+        radial-gradient(1.05px 1.05px at 61.43% 1.28%, rgba(255,255,255,0.57), transparent 70%),
+        radial-gradient(1.58px 1.58px at 6.05% 7.97%, rgba(255,255,255,0.66), transparent 70%),
+        radial-gradient(1.07px 1.07px at 56.39% 3.18%, rgba(255,255,255,0.71), transparent 70%),
+        radial-gradient(1.11px 1.11px at 41.50% 85.41%, rgba(255,255,255,0.63), transparent 70%),
+        radial-gradient(1.53px 1.53px at 98.65% 51.84%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.03px 1.03px at 43.31% 90.76%, rgba(255,255,255,0.84), transparent 70%),
+        radial-gradient(1.49px 1.49px at 50.66% 69.87%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(1.31px 1.31px at 51.06% 89.28%, rgba(255,255,255,0.69), transparent 70%),
+        radial-gradient(1.18px 1.18px at 48.19% 44.34%, rgba(255,255,255,0.61), transparent 70%),
+        radial-gradient(1.29px 1.29px at 39.68% 96.93%, rgba(255,255,255,0.58), transparent 70%),
+        radial-gradient(1.42px 1.42px at 69.27% 71.94%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(1.43px 1.43px at 26.26% 67.63%, rgba(255,255,255,0.74), transparent 70%),
+        radial-gradient(1.47px 1.47px at 27.19% 51.01%, rgba(255,255,255,0.52), transparent 70%),
+        radial-gradient(1.07px 1.07px at 23.64% 72.17%, rgba(255,255,255,0.72), transparent 70%),
+        radial-gradient(1.36px 1.36px at 33.84% 83.15%, rgba(255,255,255,0.54), transparent 70%),
+        radial-gradient(1.33px 1.33px at 36.40% 98.98%, rgba(255,255,255,0.56), transparent 70%),
+        radial-gradient(1.37px 1.37px at 46.07% 49.81%, rgba(255,255,255,0.73), transparent 70%),
+        radial-gradient(1.41px 1.41px at 1.19% 23.22%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.02px 1.02px at 3.79% 39.66%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(1.11px 1.11px at 27.57% 36.76%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.08px 1.08px at 73.47% 78.61%, rgba(255,255,255,0.82), transparent 70%),
+        radial-gradient(1.01px 1.01px at 23.11% 80.48%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(1.24px 1.24px at 44.36% 83.92%, rgba(255,255,255,0.74), transparent 70%),
+        radial-gradient(1.58px 1.58px at 47.15% 99.29%, rgba(255,255,255,0.53), transparent 70%),
+        radial-gradient(1.42px 1.42px at 34.36% 90.97%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(0.80px 0.80px at 54.50% 14.96%, rgba(255,255,255,0.42), transparent 70%),
+        radial-gradient(0.87px 0.87px at 77.36% 54.76%, rgba(255,255,255,0.63), transparent 70%),
+        radial-gradient(0.60px 0.60px at 65.75% 51.10%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.68px 0.68px at 73.18% 91.30%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.68px 0.68px at 91.99% 19.61%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.50px 0.50px at 44.65% 50.39%, rgba(255,255,255,0.56), transparent 70%),
+        radial-gradient(0.82px 0.82px at 36.05% 47.13%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.87px 0.87px at 63.15% 93.02%, rgba(255,255,255,0.37), transparent 70%),
+        radial-gradient(0.99px 0.99px at 60.34% 78.90%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.85px 0.85px at 92.25% 61.48%, rgba(255,255,255,0.59), transparent 70%),
+        radial-gradient(0.93px 0.93px at 97.13% 2.48%, rgba(255,255,255,0.53), transparent 70%),
+        radial-gradient(0.89px 0.89px at 5.57% 90.45%, rgba(255,255,255,0.69), transparent 70%),
+        radial-gradient(0.72px 0.72px at 66.24% 59.57%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.97px 0.97px at 96.96% 56.80%, rgba(255,255,255,0.46), transparent 70%),
+        radial-gradient(0.95px 0.95px at 35.31% 1.42%, rgba(255,255,255,0.43), transparent 70%),
+        radial-gradient(0.75px 0.75px at 92.14% 53.16%, rgba(255,255,255,0.54), transparent 70%),
+        radial-gradient(0.79px 0.79px at 10.31% 32.96%, rgba(255,255,255,0.35), transparent 70%),
+        radial-gradient(0.73px 0.73px at 71.88% 99.49%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(0.54px 0.54px at 84.46% 89.51%, rgba(255,255,255,0.57), transparent 70%),
+        radial-gradient(0.58px 0.58px at 78.27% 44.04%, rgba(255,255,255,0.48), transparent 70%),
+        radial-gradient(0.88px 0.88px at 75.73% 71.38%, rgba(255,255,255,0.62), transparent 70%),
+        radial-gradient(0.59px 0.59px at 90.24% 24.53%, rgba(255,255,255,0.36), transparent 70%),
+        radial-gradient(0.84px 0.84px at 27.62% 77.24%, rgba(255,255,255,0.49), transparent 70%),
+        radial-gradient(0.56px 0.56px at 72.21% 85.80%, rgba(255,255,255,0.53), transparent 70%),
+        radial-gradient(0.87px 0.87px at 96.55% 74.38%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.69px 0.69px at 36.09% 16.33%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.75px 0.75px at 56.87% 84.69%, rgba(255,255,255,0.36), transparent 70%),
+        radial-gradient(0.90px 0.90px at 59.09% 21.33%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(0.51px 0.51px at 2.40% 33.80%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.55px 0.55px at 68.65% 21.11%, rgba(255,255,255,0.35), transparent 70%),
+        radial-gradient(0.92px 0.92px at 32.72% 65.94%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.84px 0.84px at 91.30% 13.12%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(0.86px 0.86px at 68.42% 28.98%, rgba(255,255,255,0.62), transparent 70%),
+        radial-gradient(0.83px 0.83px at 69.21% 53.23%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.68px 0.68px at 94.26% 92.02%, rgba(255,255,255,0.69), transparent 70%),
+        radial-gradient(0.80px 0.80px at 21.75% 49.23%, rgba(255,255,255,0.43), transparent 70%),
+        radial-gradient(0.68px 0.68px at 30.60% 26.35%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.84px 0.84px at 21.11% 73.13%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.78px 0.78px at 37.31% 67.27%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(0.62px 0.62px at 59.12% 20.48%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.90px 0.90px at 32.22% 32.59%, rgba(255,255,255,0.42), transparent 70%),
+        radial-gradient(0.55px 0.55px at 99.31% 16.87%, rgba(255,255,255,0.61), transparent 70%),
+        radial-gradient(0.89px 0.89px at 44.82% 29.73%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.66px 0.66px at 20.48% 72.52%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.90px 0.90px at 63.11% 70.48%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.96px 0.96px at 39.49% 84.22%, rgba(255,255,255,0.54), transparent 70%),
+        radial-gradient(0.77px 0.77px at 6.56% 38.28%, rgba(255,255,255,0.48), transparent 70%),
+        radial-gradient(0.80px 0.80px at 99.32% 65.44%, rgba(255,255,255,0.52), transparent 70%),
+        radial-gradient(0.81px 0.81px at 65.72% 78.90%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(0.50px 0.50px at 33.02% 7.00%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.98px 0.98px at 17.37% 51.52%, rgba(255,255,255,0.55), transparent 70%),
+        radial-gradient(0.66px 0.66px at 38.37% 26.92%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.87px 0.87px at 21.06% 79.61%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(0.59px 0.59px at 66.39% 57.14%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.97px 0.97px at 13.66% 75.31%, rgba(255,255,255,0.64), transparent 70%),
+        radial-gradient(0.72px 0.72px at 21.17% 41.71%, rgba(255,255,255,0.61), transparent 70%),
+        radial-gradient(0.95px 0.95px at 51.41% 4.04%, rgba(255,255,255,0.58), transparent 70%),
+        radial-gradient(0.51px 0.51px at 39.84% 35.17%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.94px 0.94px at 22.59% 20.21%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.64px 0.64px at 80.59% 36.73%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.61px 0.61px at 79.12% 6.95%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.74px 0.74px at 92.04% 66.06%, rgba(255,255,255,0.59), transparent 70%),
+        radial-gradient(0.67px 0.67px at 2.92% 45.48%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.66px 0.66px at 85.14% 16.49%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.53px 0.53px at 90.61% 42.72%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.89px 0.89px at 13.40% 81.92%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.62px 0.62px at 43.72% 59.08%, rgba(255,255,255,0.65), transparent 70%),
+        radial-gradient(0.79px 0.79px at 98.06% 88.84%, rgba(255,255,255,0.50), transparent 70%),
+        radial-gradient(0.64px 0.64px at 59.68% 53.52%, rgba(255,255,255,0.49), transparent 70%),
+        radial-gradient(0.96px 0.96px at 65.50% 80.06%, rgba(255,255,255,0.63), transparent 70%),
+        radial-gradient(1000px 750px at 88% 4%, rgba(46,91,255,.08), transparent 68%),
+        radial-gradient(900px 700px at 6% 100%, rgba(24,52,120,.10), transparent 66%),
+        radial-gradient(650px 520px at 48% 52%, rgba(190,205,230,.05), transparent 70%),
+        linear-gradient(160deg, #070914 0%, #000 68%);
+      --void:     #000000;
+      --panel:    #0A1220;
+      --panel-2:  #0F1A2C;
+      --ink:      #F4F7FC;
+      --slate:    #A9B8D0;
+      --muted:    #7E8CA0;
+      --line:     rgba(255,255,255,.12);
+      --line-soft: rgba(255,255,255,.07);
+      --bg:       #000000;
+      --bg-soft:  rgba(255,255,255,.05);
+      --card:     #0A1220;
       --accent:   #2E5BFF;
-      --accent-soft: #E8EEFF;
-      --grid-line: #F0F0F0;
-      --glow: #D5C5FF;
+      --accent-2: #6E8CFF;
+      --accent-soft: rgba(46,91,255,.16);
+      --star:     #EAF1FF;
+      --mono:     'Space Mono', ui-monospace, monospace;
       --radius:   14px;
-      --shadow:   0 1px 2px rgba(16,28,46,.06), 0 8px 32px rgba(16,28,46,.09);
+      --shadow:   0 20px 60px rgba(0,0,0,.55);
     }
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
       font-family:'Inter', system-ui, sans-serif;
       font-size:16px; line-height:1.7;
-      color:var(--ink); background:var(--bg);
-      background-image:
-        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-      background-size:6rem 4rem;
+      color:var(--ink);
+      background-color:var(--void);
+      background-image:var(--galaxy-bg);
+      background-attachment:fixed;
       -webkit-font-smoothing:antialiased;
     }
     h1,h2,h3,.q{ font-family:'Questrial', sans-serif; font-weight:400; line-height:1.15; }
@@ -46,43 +180,46 @@
     :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
 
     .eyebrow{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
-      color:var(--accent); margin-bottom:18px;
+      display:inline-flex; align-items:center; gap:10px;
+      font-family:var(--mono); font-size:.78rem; font-weight:400; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--accent-2); margin-bottom:18px;
     }
-    .eyebrow::before{ content:''; width:22px; height:2px; background:var(--accent); }
+    .eyebrow .idx{ color:var(--muted); }
+    .eyebrow::before{ content:''; width:22px; height:1px; background:var(--accent); }
     .sec-h2{ font-size:clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom:14px; }
     .sec-sub{ color:var(--slate); max-width:560px; }
 
     /* ── Navigation ── */
     .nav{
       position:sticky; top:0; z-index:50;
-      background:
-        linear-gradient(rgba(7,12,21,.80), rgba(7,12,21,.86)),
-        url('assets/hero.jpg') center 15%/cover no-repeat,
-        linear-gradient(160deg, #0C1626, #16263E);
-      border-bottom:1px solid rgba(255,255,255,.07);
+      border-bottom:1px solid var(--line-soft);
     }
     .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
+      display:grid; grid-template-columns:1fr auto 1fr; align-items:center; column-gap:20px;
       height:68px;
     }
-    .nav-brand{ display:flex; align-items:center; gap:11px; }
+    .nav-brand{ display:flex; align-items:center; gap:11px; justify-self:start; }
     .nav-brand img{ height:30px; width:auto; }
-    .nav-brand span{ font-family:'Questrial'; font-size:1.15rem; letter-spacing:.14em; color:#fff; }
-    .nav-links{ display:flex; gap:32px; list-style:none; }
-    .nav-links a{ font-size:.92rem; color:#AAB6C8; transition:color .15s; }
+    .nav-brand span{ font-family:'Questrial'; font-size:1.15rem; letter-spacing:.14em; color:#fff; white-space:nowrap; }
+    .nav-links{ display:flex; align-items:center; gap:28px; list-style:none; justify-self:center; }
+    .nav-links a{ font-size:.92rem; color:var(--slate); transition:color .15s; }
     .nav-links a:hover{ color:#fff; }
+    .nav-home{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:34px; height:34px; border-radius:9px;
+      color:var(--slate); transition:color .15s, background .15s;
+    }
+    .nav-home:hover{ color:#fff; background:rgba(255,255,255,.08); }
+    .nav-toggle{ justify-self:end; }
 
     /* ── Mobil-Menü ── */
     .nav-toggle{
       display:none; width:38px; height:38px; border-radius:10px;
-      background:transparent; border:1px solid rgba(255,255,255,.14);
+      background:transparent; border:1px solid var(--line);
       align-items:center; justify-content:center; flex:none; cursor:pointer;
     }
     .nav-toggle span{
       position:relative; width:16px; height:2px; background:#fff; border-radius:2px;
-      transition:background .15s;
     }
     .nav-toggle span::before, .nav-toggle span::after{
       content:''; position:absolute; left:0; width:16px; height:2px; background:#fff; border-radius:2px;
@@ -96,13 +233,13 @@
 
     .mobile-menu{
       display:none; overflow:hidden; max-height:0;
-      background:#0A111D; border-top:1px solid rgba(255,255,255,.07);
+      background:var(--panel); border-top:1px solid var(--line-soft);
       transition:max-height .25s ease;
     }
     .mobile-menu ul{ list-style:none; padding:8px 24px 20px; display:flex; flex-direction:column; }
     .mobile-menu a{
-      display:block; padding:14px 0; font-size:1rem; color:#D4DBE6;
-      border-bottom:1px solid rgba(255,255,255,.06);
+      display:block; padding:14px 0; font-size:1rem; color:var(--slate);
+      border-bottom:1px solid var(--line-soft);
     }
     .mobile-menu li:last-child a{ border-bottom:none; }
     .nav.is-open .mobile-menu{ max-height:400px; }
@@ -121,16 +258,24 @@
 
     /* ── Hero ── */
     .hero{
-      min-height:100svh;
+      min-height:calc(100svh - 69px);
       display:flex; align-items:center; justify-content:center;
       position:relative; overflow:hidden; text-align:center;
-      /* Hintergrundbild: assets/hero.jpg – Fallback ist ein dunkler Verlauf */
-      background:
-        linear-gradient(rgba(7,12,21,.72), rgba(7,12,21,.82)),
-        url('assets/hero.jpg') center/cover no-repeat,
-        linear-gradient(160deg, #0C1626, #16263E);
     }
-    .hero-inner{ position:relative; padding:0 24px; max-width:820px; }
+    .hero-inner{ position:relative; z-index:1; padding:0 24px; max-width:820px; }
+    .hero-bg-logo-wrap{
+      position:absolute; inset:0; z-index:0;
+      display:flex; align-items:center; justify-content:center;
+      transform:translateY(60px) scale(1);
+      opacity:.36;
+      pointer-events:none;
+      will-change:transform, opacity;
+    }
+    .hero-bg-logo{
+      display:block; width:min(68vw, 860px); height:auto;
+      filter:drop-shadow(0 0 60px rgba(255,255,255,.2)) contrast(1.1);
+      pointer-events:none; user-select:none;
+    }
     .hero .brandname{
       font-family:'Questrial'; color:#fff;
       font-size:clamp(2.6rem, 7vw, 5rem);
@@ -159,121 +304,293 @@
     }
     @keyframes drop{ 0%{opacity:0; transform:scaleY(.3); transform-origin:top} 40%{opacity:1; transform:scaleY(1)} 100%{opacity:0} }
 
-    /* Browser-Mockup als Signatur-Element */
-    .browser{
-      background:var(--card); border:1px solid var(--line); border-radius:16px;
-      box-shadow:0 24px 64px rgba(0,0,0,.42); overflow:hidden;
-      transform:rotate(1.2deg);
+    /* ── Sternschnuppen ── */
+    .hero-stars{
+      position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;
     }
-    .browser-bar{
-      display:flex; align-items:center; gap:8px;
-      padding:12px 16px; border-bottom:1px solid var(--line); background:var(--bg-soft);
+    .star{ position:absolute; }
+    .star i{
+      display:block; width:150px; height:1px;
+      background:linear-gradient(90deg, #fff 0%, rgba(255,255,255,.85) 35%, rgba(255,255,255,0) 100%);
+      opacity:0;
+      animation-name:star-fly; animation-timing-function:ease-in; animation-iteration-count:infinite;
     }
-    .browser-bar i{ width:10px; height:10px; border-radius:50%; background:var(--line); }
-    .browser-bar .url{
-      flex:1; margin-left:8px; background:var(--card); border:1px solid var(--line);
-      border-radius:99px; font-size:.72rem; color:var(--muted);
-      padding:4px 14px; font-family:'Inter';
+    .star i::after{
+      content:''; position:absolute; left:-1.5px; top:50%; width:3px; height:3px;
+      background:#fff; border-radius:50%; transform:translateY(-50%);
     }
-    .browser-body{ padding:26px; }
-    .bw-hero{ height:74px; border-radius:10px; background:linear-gradient(120deg, var(--ink), #23344E); margin-bottom:14px; position:relative; overflow:hidden; }
-    .bw-hero::after{ content:''; position:absolute; left:18px; top:24px; width:46%; height:10px; border-radius:5px; background:rgba(255,255,255,.85); }
-    .bw-hero::before{ content:''; position:absolute; left:18px; top:44px; width:28%; height:7px; border-radius:4px; background:var(--accent); }
-    .bw-row{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:14px; }
-    .bw-card{ height:58px; border-radius:10px; background:var(--bg-soft); border:1px solid var(--line); position:relative; }
-    .bw-card::after{ content:''; position:absolute; left:12px; top:14px; width:55%; height:7px; border-radius:4px; background:var(--line); }
-    .bw-card::before{ content:''; position:absolute; left:12px; top:30px; width:35%; height:6px; border-radius:4px; background:var(--accent-soft); }
-    .bw-line{ height:9px; border-radius:5px; background:var(--bg-soft); margin-bottom:9px; }
-    .bw-line.short{ width:62%; }
-    .bw-badge{
-      position:absolute; right:-14px; bottom:26px;
-      background:var(--card); border:1px solid var(--line); border-radius:12px;
-      box-shadow:var(--shadow); padding:12px 18px;
-      display:flex; align-items:center; gap:10px;
-      font-size:.82rem; font-weight:600; transform:rotate(-1.2deg);
+    @keyframes star-fly{
+      0%{ transform:translateX(0); opacity:0; }
+      8%{ opacity:1; }
+      75%{ opacity:1; }
+      100%{ transform:translateX(-640px); opacity:0; }
     }
-    .bw-badge .dot{ width:9px; height:9px; border-radius:50%; background:#22C55E; box-shadow:0 0 0 4px rgba(34,197,94,.15); }
-    .hero-visual{ position:relative; }
+    @media (prefers-reduced-motion: reduce){ .star i{ animation:none; opacity:0; } }
 
-    /* ── Über Noventry ── */
-    #ueber{
-      position:relative;
-      background-image: radial-gradient(640px 420px at 92% -10%, var(--glow), transparent 70%);
-      background-repeat:no-repeat;
+    /* ── Über Noventry: Brief-Öffnen-Animation ── */
+    #ueber{ position:relative; border-top:1px solid var(--line-soft); padding:0; }
+    .letter-stage{ position:relative; height:220vh; }
+    .letter-sticky{
+      position:sticky; top:69px; height:calc(100svh - 69px);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
     }
-    .about-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:start; position:relative; }
-    .about-text p{ color:var(--slate); margin-bottom:18px; font-size:1.02rem; }
-    .about-text strong{ color:var(--ink); font-weight:600; }
-    @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:20px; } }
+    .envelope{
+      position:absolute; left:50%; top:50%; z-index:2;
+      width:min(74vw, 640px); aspect-ratio:3/2;
+      transform:translate(-50%,-50%);
+      perspective:1800px; pointer-events:none;
+    }
+    .envelope-back{
+      position:absolute; inset:0; border-radius:10px;
+      background:linear-gradient(160deg,#232833 0%,#0A0C10 100%);
+      box-shadow:0 40px 100px rgba(0,0,0,.65), 0 0 60px rgba(210,218,232,.14);
+    }
+    .envelope-flap{
+      position:absolute; inset:0;
+      border:1px solid rgba(210,218,232,.32);
+      backface-visibility:hidden;
+      filter:drop-shadow(0 0 1.5px rgba(0,0,0,.7));
+    }
+    .envelope-flap--top{
+      clip-path:polygon(0 0,100% 0,50% 50%); transform-origin:50% 0%; z-index:4;
+      background:linear-gradient(180deg,#454E5F 0%,#14171D 100%);
+    }
+    .envelope-flap--right{
+      clip-path:polygon(100% 0,100% 100%,50% 50%); transform-origin:100% 50%; z-index:3;
+      background:linear-gradient(270deg,#333A47 0%,#111318 100%);
+    }
+    .envelope-flap--left{
+      clip-path:polygon(0 0,0 100%,50% 50%); transform-origin:0% 50%; z-index:2;
+      background:linear-gradient(90deg,#2A2F39 0%,#0D0F13 100%);
+    }
+    .envelope-flap--bottom{
+      clip-path:polygon(0 100%,100% 100%,50% 50%); transform-origin:50% 100%; z-index:1;
+      background:linear-gradient(0deg,#1E222B 0%,#08090C 100%);
+    }
+    .envelope-seal{
+      position:absolute; top:50%; left:50%; width:72px; height:72px; border-radius:50%;
+      transform:translate(-50%,-50%);
+      background:radial-gradient(circle at 34% 30%, #EAF1FF, #333A47 72%);
+      display:flex; align-items:center; justify-content:center; z-index:5;
+      box-shadow:0 0 40px rgba(220,228,240,.5), 0 8px 18px rgba(0,0,0,.5), inset 0 1px 2px rgba(255,255,255,.35);
+    }
+    .envelope-seal img{ width:30px; height:auto; opacity:.95; }
+    .letter-content{ position:relative; z-index:1; perspective:1600px; }
+    .letter-paper{
+      position:absolute; inset:-44px -36px; z-index:0;
+      border-radius:20px;
+      background:linear-gradient(160deg, #1B2029 0%, #05060A 100%);
+      border:1px solid rgba(210,218,232,.16);
+      box-shadow:0 40px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(230,235,244,.05);
+      opacity:0; transform:scale(.55); transform-origin:center;
+      pointer-events:none;
+    }
+    .letter-content .about-head,
+    .letter-content .about-text{ position:relative; z-index:1; transform-origin:top center; backface-visibility:hidden; will-change:transform, opacity; }
+    @media (max-width:900px){
+      .letter-sticky{ padding:0 24px; }
+      .envelope{ width:min(82vw, 380px); }
+      .letter-paper{ inset:-28px -18px; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .letter-stage{ height:auto; }
+      .letter-sticky{ position:relative; top:0; height:auto; padding:96px 0; }
+      .envelope{ display:none; }
+      .letter-paper{ opacity:1; transform:none; }
+    }
+
+    .about-grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:64px; align-items:start; position:relative; }
+    .about-head h2{ font-size:clamp(2.1rem, 4vw, 3.1rem); max-width:9ch; }
+    .about-signal{
+      display:flex; align-items:center; gap:10px; margin-top:32px;
+      font-family:var(--mono); font-size:.78rem; color:var(--muted); letter-spacing:.03em;
+    }
+    .pulse-dot{ width:7px; height:7px; border-radius:50%; background:#3DDC84; position:relative; flex:none; }
+    .pulse-dot::after{
+      content:''; position:absolute; inset:-6px; border-radius:50%; border:1px solid #3DDC84;
+      animation:pulse 2.4s ease-out infinite;
+    }
+    @keyframes pulse{ 0%{ transform:scale(.6); opacity:.8; } 100%{ transform:scale(2.1); opacity:0; } }
+    .about-text p{ color:var(--slate); margin-bottom:22px; font-size:1.05rem; }
+    .about-text p:first-child{ font-size:1.28rem; color:var(--ink); line-height:1.6; }
+    .about-text strong{ color:#fff; font-weight:600; }
+    .about-sign{
+      margin-top:36px; padding-top:26px; border-top:1px solid var(--line-soft);
+      display:flex; flex-wrap:wrap; align-items:baseline; gap:12px 44px;
+    }
+    .sign-name{
+      font-family:'Allura', cursive; font-size:2rem; line-height:1;
+      color:#D9E1EC; text-shadow:0 0 18px rgba(200,215,240,.25);
+    }
+    @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:28px; } }
 
     /* ── Leistungen ── */
-    .services{
-      position:relative; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-      background-image: radial-gradient(560px 380px at 2% 105%, var(--glow), transparent 70%);
-      background-repeat:no-repeat;
+    .services{ position:relative; border-top:1px solid var(--line-soft); }
+    .sys-list{ margin-top:52px; border-top:1px solid var(--line-soft); }
+    .sys-row{
+      display:grid; grid-template-columns:56px 46px 1fr; gap:28px; align-items:start;
+      padding:32px 0; border-bottom:1px solid var(--line-soft);
+      transition:background .2s;
     }
-    .cards{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-top:48px; }
-    .card{
-      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-      padding:30px 28px; transition:transform .2s, box-shadow .2s;
-      box-shadow:0 1px 3px rgba(13,23,40,.05);
-    }
-    .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
-    .card-icon{
+    .sys-row:hover{ background:rgba(255,255,255,.025); }
+    .sys-index{ font-family:var(--mono); color:var(--muted); font-size:.92rem; padding-top:8px; }
+    .sys-icon{
       width:46px; height:46px; border-radius:12px; background:var(--accent-soft);
-      display:flex; align-items:center; justify-content:center; margin-bottom:20px;
-      color:var(--accent);
+      display:flex; align-items:center; justify-content:center; color:var(--accent-2);
+      transition:background .2s, color .2s; flex:none;
     }
-    .card h3{ font-size:1.22rem; margin-bottom:10px; }
-    .card p{ color:var(--slate); font-size:.95rem; }
+    .sys-row:hover .sys-icon{ background:var(--accent); color:#fff; }
+    .sys-body h3{ font-size:1.3rem; margin-bottom:8px; color:#fff; }
+    .sys-body p{ color:var(--slate); font-size:.98rem; max-width:640px; }
+    @media (max-width:640px){
+      .sys-row{ grid-template-columns:40px 40px 1fr; gap:16px; padding:24px 0; }
+      .sys-icon{ width:40px; height:40px; }
+    }
 
-    /* ── Vorgehen ── */
-    .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
-    .step{ position:relative; padding:30px 28px 30px 28px; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:0 1px 3px rgba(13,23,40,.05); }
-    .step-num{
-      font-family:'Questrial'; font-size:2.6rem; color:var(--accent);
-      line-height:1; margin-bottom:16px;
+    /* ── Vorgehen: Flugbahn-Timeline ── */
+    #vorgehen{ position:relative; border-top:1px solid var(--line-soft); }
+    .trajectory{ position:relative; margin-top:60px; padding-left:60px; }
+    .trajectory::before{
+      content:''; position:absolute; left:22px; top:22px; bottom:22px; width:1px;
+      background:linear-gradient(to bottom, var(--accent), rgba(46,91,255,.1));
     }
-    .step h3{ font-size:1.18rem; margin-bottom:10px; }
-    .step p{ color:var(--slate); font-size:.95rem; }
-    .step::after{
-      content:'→'; position:absolute; right:-16px; top:50%; transform:translateY(-50%);
-      color:var(--muted); font-size:1.3rem; background:var(--bg); padding:2px 4px;
+    .trail-dot{
+      position:absolute; left:18px; width:9px; height:9px; border-radius:50%;
+      background:var(--star); box-shadow:0 0 14px 3px rgba(234,241,255,.65);
+      animation:trail-travel 7s ease-in-out infinite;
     }
-    .step:last-child::after{ display:none; }
+    @keyframes trail-travel{ 0%,100%{ top:22px; opacity:.9; } 50%{ top:calc(100% - 22px); opacity:1; } }
+    .stop{ position:relative; padding-bottom:60px; }
+    .stop:last-child{ padding-bottom:0; }
+    .stop-node{
+      position:absolute; left:-60px; top:0; width:44px; height:44px; border-radius:50%;
+      background:var(--panel); border:1px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--mono); font-size:.92rem; color:var(--accent-2);
+      z-index:1;
+    }
+    .stop h3{ font-size:1.24rem; margin-bottom:10px; color:#fff; }
+    .stop p{ color:var(--slate); font-size:.98rem; max-width:600px; }
+    @media (max-width:640px){
+      .trajectory{ padding-left:48px; }
+      .stop-node{ left:-48px; width:36px; height:36px; font-size:.8rem; }
+      .trajectory::before{ left:18px; }
+      .trail-dot{ left:14px; }
+    }
 
-    /* ── Projekte ── */
-    #vorgehen{
-      position:relative;
-      background-image: radial-gradient(560px 380px at 98% -8%, var(--glow), transparent 70%);
-      background-repeat:no-repeat;
+    /* ── Angebote: Karten-Deck ── */
+    #angebote{ position:relative; border-top:1px solid var(--line-soft); overflow-x:hidden; }
+    .deck-stage{ position:relative; max-width:1040px; margin:76px auto 0; }
+    .deck{ position:relative; width:860px; max-width:100%; margin:0 auto; min-height:720px; }
+    .deck-arrow{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:52px; height:52px; border-radius:50%; z-index:6; flex:none;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--panel); border:1px solid var(--line); color:var(--slate);
+      cursor:pointer; transition:color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
     }
-    .projects{
-      position:relative; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-      background-image: radial-gradient(560px 380px at 100% 105%, var(--glow), transparent 70%);
-      background-repeat:no-repeat;
+    .deck-arrow:hover{ color:#fff; border-color:rgba(140,180,255,.55); background:rgba(46,91,255,.14); transform:translateY(-50%) translateY(-2px); }
+    .deck-arrow:active{ transform:translateY(-50%); }
+    .deck-arrow--prev{ left:0; }
+    .deck-arrow--next{ right:0; }
+    @media (max-width:760px){
+      .deck-arrow{ width:36px; height:36px; }
+      .deck{ width:calc(100% - 84px); }
     }
-    .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:48px; }
+    .deck-card{
+      position:absolute; top:0; left:50%;
+      width:390px; aspect-ratio:5/7; height:auto;
+      border-radius:18px;
+      background:
+        radial-gradient(1px 1px at 12% 16%, rgba(255,255,255,.9), transparent 70%),
+        radial-gradient(1px 1px at 82% 11%, rgba(255,255,255,.7), transparent 70%),
+        radial-gradient(1.4px 1.4px at 22% 78%, rgba(255,255,255,.85), transparent 70%),
+        radial-gradient(1px 1px at 70% 86%, rgba(255,255,255,.6), transparent 70%),
+        radial-gradient(1.3px 1.3px at 48% 38%, rgba(255,255,255,.7), transparent 70%),
+        radial-gradient(1px 1px at 88% 55%, rgba(255,255,255,.6), transparent 70%),
+        radial-gradient(1px 1px at 33% 56%, rgba(255,255,255,.5), transparent 70%),
+        radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,.55), transparent 70%),
+        radial-gradient(1px 1px at 18% 45%, rgba(255,255,255,.5), transparent 70%),
+        radial-gradient(1px 1px at 92% 30%, rgba(255,255,255,.55), transparent 70%),
+        linear-gradient(160deg, #0B1526 0%, #04060C 100%);
+      border:1px solid rgba(120,160,255,.32);
+      box-shadow:0 0 0 1px rgba(255,255,255,.03) inset, 0 20px 50px rgba(0,0,0,.6);
+      padding:32px 30px; cursor:pointer; color:var(--ink); font:inherit; text-align:center;
+      display:flex; flex-direction:column; align-items:center;
+      transition:transform .55s cubic-bezier(.22,.61,.36,1), opacity .5s ease, filter .5s ease, box-shadow .5s ease, border-color .5s ease;
+    }
+    .deck-card.is-front{
+      transform:translateX(-50%) translateY(0) rotate(0deg) scale(1);
+      z-index:3; opacity:1; filter:none;
+      box-shadow:0 0 0 1px rgba(140,180,255,.14) inset, 0 0 60px rgba(80,140,255,.4), 0 30px 60px rgba(0,0,0,.65);
+      border-color:rgba(140,180,255,.65);
+    }
+    .deck-card.is-left{
+      transform:translateX(-50%) translate(-212px, 60px) rotate(-11deg) scale(.8);
+      z-index:2; opacity:.5; filter:brightness(.6) saturate(.8);
+    }
+    .deck-card.is-right{
+      transform:translateX(-50%) translate(212px, 60px) rotate(11deg) scale(.8);
+      z-index:1; opacity:.5; filter:brightness(.6) saturate(.8);
+    }
+    .deck-card:hover:not(.is-front){ filter:brightness(.85) saturate(1); opacity:.72; }
+    .deck-card:focus-visible{ outline:2px solid var(--accent); outline-offset:5px; }
+    .deck-index{
+      position:absolute; display:flex; flex-direction:column; align-items:center; gap:3px;
+      font-family:'Questrial'; font-size:1.15rem; color:#fff; line-height:1;
+    }
+    .deck-index--tl{ top:18px; left:18px; }
+    .deck-index--br{ bottom:18px; right:18px; transform:rotate(180deg); }
+    .deck-index-mark{ width:14px; height:auto; opacity:.85; }
+    .deck-emblem{
+      width:112px; height:auto; margin:38px 0 18px;
+      filter:drop-shadow(0 0 26px rgba(140,180,255,.55));
+      opacity:.92;
+    }
+    .deck-body{ display:flex; flex-direction:column; align-items:center; gap:12px; flex:1; }
+    .deck-name{ font-family:'Questrial'; font-size:1.55rem; color:#fff; letter-spacing:.04em; text-transform:uppercase; }
+    .deck-price{ font-family:var(--mono); font-size:1.1rem; color:var(--accent-2); }
+    .deck-features{ list-style:none; font-size:.92rem; color:var(--slate); display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+    .deck-features li::before{ content:'✓ '; color:var(--accent-2); }
+    .deck-cta{
+      margin-top:auto; font-family:var(--mono); font-size:.76rem; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--muted); padding-top:16px;
+    }
+    .deck-card.is-front .deck-cta{ color:var(--accent-2); }
+    .deck-note{ text-align:center; color:var(--muted); font-size:.85rem; margin-top:40px; }
+    @media (max-width:640px){
+      .deck-stage{ margin-top:56px; }
+      .deck{ min-height:520px; }
+      .deck-card{ width:min(70vw, 300px); padding:22px 20px; }
+      .deck-card.is-left{ transform:translateX(-50%) translate(-112px, 38px) rotate(-10deg) scale(.78); }
+      .deck-card.is-right{ transform:translateX(-50%) translate(112px, 38px) rotate(10deg) scale(.78); }
+      .deck-emblem{ width:74px; margin:24px 0 13px; }
+      .deck-features{ font-size:.8rem; }
+    }
+
+    /* ── Projekte: editorial Werkliste ── */
+    .projects{ position:relative; border-top:1px solid var(--line-soft); }
+    .proj-list{ margin-top:52px; border-top:1px solid var(--line-soft); }
     .proj{
-      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-      padding:28px; display:flex; flex-direction:column; gap:12px;
-      transition:transform .2s, box-shadow .2s;
-      box-shadow:0 1px 3px rgba(13,23,40,.05);
+      position:relative; display:grid; grid-template-columns:56px 1fr; gap:28px;
+      padding:36px 0; border-bottom:1px solid var(--line-soft);
+      transition:background .2s;
     }
-    .proj:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
-    .proj-top{ display:flex; align-items:center; justify-content:space-between; }
-    .proj h3{ font-size:1.2rem; }
-    .proj-kind{ font-size:.75rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:4px 12px; border-radius:99px; }
-    .proj p{ color:var(--slate); font-size:.95rem; }
-    .proj-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; }
-    .proj-tags span{ font-size:.78rem; color:var(--slate); border:1px solid var(--line); border-radius:99px; padding:3px 12px; }
+    .proj:hover{ background:rgba(255,255,255,.025); }
+    .proj-index{ font-family:var(--mono); color:var(--muted); font-size:.92rem; padding-top:6px; }
+    .proj-top{ display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .proj h3{ font-size:clamp(1.3rem, 2.2vw, 1.65rem); font-family:'Questrial'; color:#fff; display:inline-flex; align-items:center; gap:10px; }
+    .proj .arrow{ color:var(--accent-2); transition:transform .25s ease; flex:none; }
+    .proj:hover .arrow{ transform:translateX(6px); }
+    .proj-kind{ font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-2); background:var(--accent-soft); padding:5px 12px; border-radius:99px; flex:none; }
+    .proj p{ color:var(--slate); font-size:1rem; margin-top:12px; max-width:620px; }
+    .proj-tags{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+    .proj-tags span{ font-family:var(--mono); font-size:.74rem; color:var(--muted); border:1px solid var(--line); border-radius:99px; padding:4px 12px; }
+    @media (max-width:640px){ .proj{ grid-template-columns:30px 1fr; gap:16px; padding:26px 0; } }
 
     /* ── Kontakt ── */
-    #kontakt{
-      position:relative;
-      background-image: radial-gradient(560px 380px at 6% 110%, var(--glow), transparent 70%);
-      background-repeat:no-repeat;
-    }
+    #kontakt{ position:relative; border-top:1px solid var(--line-soft); }
     .contact-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; align-items:start; margin-top:12px; position:relative; }
     .contact-info h2{ font-size:clamp(1.8rem,3.6vw,2.6rem); margin-bottom:16px; }
     .contact-info p{ color:var(--slate); margin-bottom:28px; max-width:400px; }
@@ -312,8 +629,166 @@
     .contact-success h3{ font-size:1.3rem; }
     .contact-success p{ color:var(--slate); font-size:.92rem; }
 
+    /* ── Anfahrt: Planet → echte Karte mit Route ── */
+    #anfahrt{ position:relative; border-top:1px solid var(--line-soft); }
+    .route-card{
+      position:relative;
+      margin-top:52px;
+    }
+    .route-top{
+      display:flex; justify-content:space-between; align-items:flex-start; gap:24px;
+      flex-wrap:wrap; margin-bottom:26px;
+    }
+    .route-point{ display:flex; flex-direction:column; gap:6px; }
+    .route-point--end{ text-align:right; align-items:flex-end; }
+    .route-point-label{ font-family:var(--mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+    .route-point-value{ font-family:'Questrial'; font-size:1.4rem; color:#fff; }
+
+    .route-body{ display:flex; gap:40px; align-items:stretch; }
+    .route-stage{
+      position:relative; z-index:0; flex:1 1 0%; min-width:0; height:600px;
+      border-radius:28px; overflow:hidden; background:transparent;
+    }
+    /* weicher Übergang der rechteckigen Karte in den Sternenhintergrund, statt eines Rahmens */
+    .route-stage::after{
+      content:''; position:absolute; inset:0; z-index:3; pointer-events:none; border-radius:28px;
+      box-shadow:inset 0 0 70px 22px var(--void), inset 0 0 160px 46px rgba(0,0,0,.6);
+    }
+
+    /* Planet-Ansicht (Startzustand) */
+    .planet-view{
+      position:absolute; inset:0; z-index:2; display:flex; align-items:center; justify-content:center;
+      transition:opacity .9s ease, transform .9s ease;
+    }
+    .planet-view.is-hidden{ opacity:0; pointer-events:none; }
+    .planet-view.is-zooming{ transition:none; }
+    .planet{
+      position:relative; width:min(58vw, 400px); aspect-ratio:1/1; border-radius:50%;
+      overflow:hidden; isolation:isolate;
+      transition:transform 2s cubic-bezier(.55,0,.85,.45);
+      box-shadow:
+        0 0 18px 2px rgba(150,190,230,.4),
+        0 0 80px 12px rgba(90,130,200,.22),
+        inset -34px -26px 70px rgba(0,0,0,.88),
+        inset 18px 14px 34px rgba(255,255,255,.06);
+    }
+    .planet-texture, .planet-clouds{
+      position:absolute; inset:0;
+      background-repeat:repeat-x; background-size:200% 100%;
+      transition:background-position 1.7s cubic-bezier(.4,0,.2,1), background-size 1.7s cubic-bezier(.4,0,.2,1);
+    }
+    .planet-texture{
+      background-image:url('https://upload.wikimedia.org/wikipedia/commons/c/c3/Solarsystemscope_texture_2k_earth_daymap.jpg');
+      filter:saturate(1.05) brightness(1) contrast(1);
+    }
+    .planet-clouds{
+      background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/ed/Solarsystemscope_texture_2k_earth_clouds.jpg');
+      mix-blend-mode:screen; opacity:.55;
+    }
+    .planet-shade{
+      position:absolute; inset:-30px; border-radius:50%;
+      background:
+        radial-gradient(circle at 76% 50%, transparent 26%, rgba(4,8,17,.35) 46%, rgba(2,5,11,.84) 66%, rgba(1,3,8,.96) 86%);
+      mix-blend-mode:multiply; pointer-events:none;
+      filter:blur(9px);
+    }
+    .planet-highlight{
+      position:absolute; inset:0;
+      background:radial-gradient(circle at 32% 30%, rgba(255,255,255,.32), transparent 44%);
+      mix-blend-mode:screen; opacity:.42; pointer-events:none;
+    }
+    .planet-rim{
+      position:absolute; inset:-20px; border-radius:50%; pointer-events:none;
+      background:radial-gradient(circle, transparent 78%, rgba(170,200,235,.32) 90%, rgba(170,200,235,.1) 96%, transparent 100%);
+      mix-blend-mode:screen;
+      filter:blur(3px);
+    }
+    .planet::after{
+      content:''; position:absolute; inset:-22px; border-radius:50%;
+      box-shadow:0 0 60px rgba(120,155,210,.2); pointer-events:none;
+    }
+    .planet-hint{
+      position:absolute; bottom:26px; left:0; right:0; text-align:center;
+      font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; color:var(--muted);
+      transition:opacity .4s ease;
+    }
+
+    /* echte Karte */
+    .route-map{ position:absolute; inset:0; z-index:1; opacity:0; transition:opacity 1.1s ease; background:#0a0c10; }
+    .route-map.is-visible{ opacity:1; }
+    .route-car-icon{ display:flex; align-items:center; justify-content:center; transition:transform .15s linear; filter:drop-shadow(0 2px 5px rgba(0,0,0,.55)); }
+    .leaflet-container{ background:#0a0c10; font-family:'Inter', sans-serif; }
+    .leaflet-control-zoom a{ background:var(--panel) !important; color:#fff !important; border-color:var(--line) !important; }
+    .leaflet-control-attribution{ background:rgba(4,6,10,.75) !important; color:var(--muted) !important; }
+    .leaflet-control-attribution a{ color:var(--accent-2) !important; }
+
+    /* Statistik-Spalte rechts vom Planeten: Distanz + Fahrzeit */
+    .route-stats{
+      flex:0 0 232px; display:flex; flex-direction:column; justify-content:center; gap:30px;
+    }
+    .route-stat{ display:flex; flex-direction:column; gap:6px; }
+    .route-stat-value{
+      font-family:'Questrial'; font-size:2.5rem; color:#fff; line-height:1;
+      transition:opacity .35s ease, transform .35s ease;
+    }
+    .route-stat-value.is-empty{ color:var(--muted); font-size:1.7rem; }
+    .route-stat-label{ font-family:var(--mono); font-size:.7rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); }
+    .route-stats-divider{ height:1px; background:var(--line-soft); }
+
+    .route-actions{ display:flex; flex-direction:column; align-items:stretch; gap:14px; margin-top:4px; width:100%; }
+    .route-addr-form{ display:flex; flex-direction:column; gap:8px; }
+    .route-addr-row{ display:flex; gap:8px; }
+    .route-addr-row input{
+      flex:1; min-width:0; padding:12px 16px; border-radius:99px;
+      background:rgba(255,255,255,.04); border:1px solid var(--line);
+      color:#fff; font-family:'Inter'; font-size:.86rem; outline:none;
+      transition:border-color .2s ease, background .2s ease;
+    }
+    .route-addr-row input::placeholder{ color:var(--muted); }
+    .route-addr-row input:focus{ border-color:var(--accent-2); background:rgba(255,255,255,.07); }
+    .route-addr-row input:disabled{ opacity:.55; }
+    .route-addr-submit{
+      flex:0 0 auto; width:44px; height:44px; border-radius:50%;
+      background:var(--accent); border:none; color:#fff; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:transform .15s ease, box-shadow .15s ease, opacity .2s ease;
+    }
+    .route-addr-submit:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(46,91,255,.35); }
+    .route-addr-submit:disabled{ opacity:.55; cursor:default; transform:none; box-shadow:none; }
+    .route-or{
+      font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--muted); text-align:center;
+    }
+    .route-cta{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      width:100%; padding:14px 22px; border-radius:99px;
+      background:var(--accent); color:#fff; font-weight:600; font-size:.9rem;
+      border:none; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease, opacity .2s ease;
+      font-family:'Inter';
+    }
+    .route-cta:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(46,91,255,.35); }
+    .route-cta:disabled{ opacity:.6; cursor:default; transform:none; box-shadow:none; }
+    .route-cta--ghost{
+      background:transparent; border:1px solid var(--line); color:var(--slate); font-weight:500;
+    }
+    .route-cta--ghost:hover{ border-color:var(--accent-2); color:#fff; box-shadow:none; }
+    .route-status{ font-size:.84rem; color:var(--slate); }
+    .route-status a{ color:var(--accent-2); text-decoration:underline; }
+    @media (max-width:900px){
+      .route-body{ flex-direction:column; }
+      .route-stage{ flex:none; height:440px; }
+      .route-stats{ flex:none; flex-direction:row; flex-wrap:wrap; gap:24px 40px; }
+      .route-actions{ flex:1 1 100%; }
+    }
+    @media (max-width:640px){
+      .route-point-value{ font-size:1.15rem; }
+      .route-stage{ height:380px; }
+      .planet{ width:min(70vw, 300px); }
+      .route-stat-value{ font-size:2rem; }
+    }
+
     /* ── Footer ── */
-    .footer{ background:var(--ink); color:#B9C4D4; padding:64px 0 28px; }
+    .footer{ border-top:1px solid var(--line-soft); color:var(--slate); padding:64px 0 28px; }
     .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; margin-bottom:48px; }
     .footer-brand img{ height:34px; margin-bottom:16px; }
     .footer-brand p{ font-size:.92rem; max-width:300px; }
@@ -322,9 +797,9 @@
     .footer a{ font-size:.92rem; transition:color .15s; }
     .footer a:hover{ color:#fff; }
     .footer-bottom{
-      border-top:1px solid rgba(255,255,255,.12); padding-top:24px;
+      border-top:1px solid var(--line-soft); padding-top:24px;
       display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
-      font-size:.82rem; color:#7E8CA0;
+      font-size:.82rem; color:var(--muted);
     }
 
     /* ── Scroll-Animation ── */
@@ -339,12 +814,6 @@
     /* ── Responsive ── */
     @media (max-width: 900px){
       section{ padding:72px 0; }
-      .hero{ padding:72px 0 64px; }
-      .hero-grid{ grid-template-columns:1fr; gap:48px; }
-      .hero p{ max-width:none; }
-      .cards, .steps{ grid-template-columns:1fr; }
-      .step::after{ display:none; }
-      .proj-grid{ grid-template-columns:1fr; }
       .contact-grid{ grid-template-columns:1fr; gap:40px; }
       .nav-links{ display:none; }
       .nav-toggle{ display:flex; }
@@ -354,7 +823,6 @@
     @media (max-width: 540px){
       .form-row{ grid-template-columns:1fr; }
       .contact-card{ padding:26px 20px; }
-      .bw-badge{ right:8px; }
     }
   </style>
 </head>
@@ -364,13 +832,16 @@
   <nav class="nav" id="main-nav">
     <div class="wrap nav-inner">
       <a href="#" class="nav-brand" aria-label="Noventry Webdesign – Startseite">
-        <img src="assets/logo-mark-light.png" alt="">
-        <span>NOVENTRY</span>
+        <span>NOVENTRY GbR</span>
       </a>
       <ul class="nav-links">
+        <li><a href="#" class="nav-home" aria-label="Home">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a></li>
         <li><a href="#ueber">Über uns</a></li>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#vorgehen">Unser Vorgehen</a></li>
+        <li><a href="#angebote">Pakete</a></li>
         <li><a href="#projekte">Projekte</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
@@ -380,9 +851,11 @@
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <ul>
+        <li><a href="#">Home</a></li>
         <li><a href="#ueber">Über uns</a></li>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#vorgehen">Unser Vorgehen</a></li>
+        <li><a href="#angebote">Pakete</a></li>
         <li><a href="#projekte">Projekte</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
@@ -391,6 +864,20 @@
 
   <!-- ─── HERO ───────────────────────────────────────────────────── -->
   <header class="hero">
+    <div class="hero-bg-logo-wrap">
+      <img class="hero-bg-logo" src="assets/logo-mark-light.png" alt="" aria-hidden="true">
+    </div>
+    <div class="hero-stars" aria-hidden="true">
+      <span class="star" style="top:12%; left:78%; transform:rotate(8deg);"><i style="animation-duration:5.2s; animation-delay:.2s;"></i></span>
+      <span class="star" style="top:6%;  left:38%; transform:rotate(-14deg);"><i style="animation-duration:6.6s; animation-delay:2.4s;"></i></span>
+      <span class="star" style="top:16%; left:14%; transform:rotate(-6deg);"><i style="animation-duration:7.1s; animation-delay:1.1s;"></i></span>
+      <span class="star" style="top:34%; left:60%; transform:rotate(12deg);"><i style="animation-duration:5.8s; animation-delay:6.3s;"></i></span>
+      <span class="star" style="top:40%; left:20%; transform:rotate(4deg);"><i style="animation-duration:5s;   animation-delay:3.3s;"></i></span>
+      <span class="star" style="top:62%; left:8%;  transform:rotate(14deg);"><i style="animation-duration:5.6s; animation-delay:5.2s;"></i></span>
+      <span class="star" style="top:52%; left:92%; transform:rotate(10deg);"><i style="animation-duration:4.9s; animation-delay:7.6s;"></i></span>
+      <span class="star" style="top:86%; left:34%; transform:rotate(-12deg);"><i style="animation-duration:7.4s; animation-delay:.9s;"></i></span>
+      <span class="star" style="top:46%; left:44%; transform:rotate(6deg);"><i style="animation-duration:5.4s; animation-delay:13.2s;"></i></span>
+    </div>
     <div class="hero-inner fu on">
       <h1 class="brandname">NOVENTRY</h1>
       <div class="brandsub">Webdesign</div>
@@ -401,14 +888,33 @@
 
   <!-- ─── ÜBER NOVENTRY ──────────────────────────────────────────── -->
   <section id="ueber">
-    <div class="wrap about-grid">
-      <div class="fu">
-        <div class="eyebrow">Über Noventry</div>
-        <h2 class="sec-h2">Webdesign mit Handschlag statt Hotline</h2>
-      </div>
-      <div class="about-text fu">
-        <p>Noventry Webdesign wurde von <strong>Tim Bimberg und Lewin Steppuhn</strong> in Hemer gegründet – aus der Überzeugung, dass auch lokale Unternehmen einen Webauftritt verdienen, der mehr kann als eine Visitenkarte im Netz.</p>
-        <p>Wir arbeiten persönlich und auf Augenhöhe: Wir hören zu, bevor wir gestalten, setzen jede Website individuell um und überreichen das Ergebnis persönlich – keine anonymen Baukästen, keine Warteschleifen, keine versteckten Kosten.</p>
+    <div class="letter-stage">
+      <div class="letter-sticky">
+        <div class="envelope" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="envelope-flap envelope-flap--bottom"></div>
+          <div class="envelope-flap envelope-flap--left"></div>
+          <div class="envelope-flap envelope-flap--right"></div>
+          <div class="envelope-flap envelope-flap--top"></div>
+          <div class="envelope-seal"><img src="assets/logo-mark-light.png" alt=""></div>
+        </div>
+        <div class="wrap about-grid letter-content">
+          <div class="letter-paper"></div>
+          <div class="about-head">
+            <div class="eyebrow"><span class="idx">01</span><span>Über Noventry</span></div>
+            <h2 class="sec-h2">Webdesign mit Handschlag statt Hotline</h2>
+            <div class="about-signal"><span class="pulse-dot"></span>Aktiv in Hemer · persönliche Betreuung</div>
+          </div>
+          <div class="about-text">
+            <p>Viele Unternehmen haben eine Website, die ihrem echten Niveau nicht gerecht wird. Genau das ändern wir.</p>
+            <p>Noventry Webdesign aus Hemer steht für Webauftritte, die Vertrauen schaffen, Anfragen generieren und professionell überzeugen. Kein Baukastensystem, kein Standardpaket. Jede Website wird individuell entwickelt, auf Basis eines persönlichen Gesprächs und eines klaren Verständnisses Ihres Unternehmens.</p>
+            <p><strong>Tim Bimberg und Lewin Steppuhn</strong> stehen persönlich hinter jedem Projekt.</p>
+            <div class="about-sign">
+              <span class="sign-name">Tim Bimberg</span>
+              <span class="sign-name">Lewin Steppuhn</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -417,31 +923,40 @@
   <section class="services" id="leistungen">
     <div class="wrap">
       <div class="fu">
-        <div class="eyebrow">Leistungen</div>
+        <div class="eyebrow"><span class="idx">02</span><span>Leistungen</span></div>
         <h2 class="sec-h2">Alles für Ihren professionellen Webauftritt</h2>
         <p class="sec-sub">Von der ersten Idee bis zur fertigen Website – wir kümmern uns um alles, damit Sie sich auf Ihr Geschäft konzentrieren können.</p>
       </div>
-      <div class="cards">
-        <div class="card fu">
-          <div class="card-icon">
+      <div class="sys-list">
+        <div class="sys-row fu">
+          <div class="sys-index">01</div>
+          <div class="sys-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/><path d="M6 6.5h.01M9 6.5h.01"/></svg>
           </div>
-          <h3>Website-Erstellung</h3>
-          <p>Individuelle Websites, die zu Ihrem Unternehmen passen – modern, schnell und auf allen Geräten perfekt dargestellt.</p>
+          <div class="sys-body">
+            <h3>Website-Erstellung</h3>
+            <p>Individuelle Websites, die zu Ihrem Unternehmen passen – modern, schnell und auf allen Geräten perfekt dargestellt.</p>
+          </div>
         </div>
-        <div class="card fu">
-          <div class="card-icon">
+        <div class="sys-row fu">
+          <div class="sys-index">02</div>
+          <div class="sys-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
           </div>
-          <h3>SEO &amp; Sichtbarkeit</h3>
-          <p>Damit Kunden aus Ihrer Region Sie finden: lokale Suchmaschinen-Optimierung, saubere Technik und schnelle Ladezeiten.</p>
+          <div class="sys-body">
+            <h3>SEO &amp; Sichtbarkeit</h3>
+            <p>Damit Kunden aus Ihrer Region Sie finden: lokale Suchmaschinen-Optimierung, saubere Technik und schnelle Ladezeiten.</p>
+          </div>
         </div>
-        <div class="card fu">
-          <div class="card-icon">
+        <div class="sys-row fu">
+          <div class="sys-index">03</div>
+          <div class="sys-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 0-10-10"/><path d="M2 22l4-4"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
-          <h3>Pflege &amp; Betreuung</h3>
-          <p>Auch nach der Übergabe sind wir für Sie da – Änderungen, Aktualisierungen und persönlicher Support ohne Ticketsystem.</p>
+          <div class="sys-body">
+            <h3>Pflege &amp; Betreuung</h3>
+            <p>Auch nach der Übergabe sind wir für Sie da – Änderungen, Aktualisierungen und persönlicher Support ohne Ticketsystem.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -451,23 +966,24 @@
   <section id="vorgehen">
     <div class="wrap">
       <div class="fu">
-        <div class="eyebrow">Unser Vorgehen</div>
+        <div class="eyebrow"><span class="idx">03</span><span>Unser Vorgehen</span></div>
         <h2 class="sec-h2">In drei Schritten zur neuen Website</h2>
         <p class="sec-sub">Kein Fachchinesisch, keine versteckten Kosten – so einfach läuft die Zusammenarbeit mit uns ab.</p>
       </div>
-      <div class="steps">
-        <div class="step fu">
-          <div class="step-num">1</div>
+      <div class="trajectory fu">
+        <span class="trail-dot" aria-hidden="true"></span>
+        <div class="stop">
+          <div class="stop-node">01</div>
           <h3>Kostenloses Erstgespräch</h3>
           <p>Wir hören zu, bevor wir gestalten: Was macht Ihr Unternehmen aus, wer sind Ihre Kunden, was soll die Website leisten? Unverbindlich und gern persönlich vor Ort.</p>
         </div>
-        <div class="step fu">
-          <div class="step-num">2</div>
+        <div class="stop">
+          <div class="stop-node">02</div>
           <h3>Individuelle Umsetzung</h3>
           <p>Wir gestalten Ihre Website passgenau für Ihr Unternehmen – keine Baukasten-Vorlage, sondern ein Auftritt, der zu Ihnen passt und Sie von der Konkurrenz abhebt.</p>
         </div>
-        <div class="step fu">
-          <div class="step-num">3</div>
+        <div class="stop">
+          <div class="stop-node">03</div>
           <h3>Persönliche Übergabe</h3>
           <p>Wir überreichen Ihnen Ihre fertige Website persönlich und erklären alles in Ruhe. Der Preis? Fair und transparent – ermittelt nach gründlicher Analyse, nicht pauschal.</p>
         </div>
@@ -475,24 +991,110 @@
     </div>
   </section>
 
+  <!-- ─── ANGEBOTE ───────────────────────────────────────────────── -->
+  <section id="angebote">
+    <div class="wrap">
+      <div class="fu">
+        <div class="eyebrow"><span class="idx">04</span><span>Unsere Pakete</span></div>
+        <h2 class="sec-h2">Wählen Sie Ihr Startpaket</h2>
+        <p class="sec-sub">Drei Einstiegspunkte, ein Ziel: eine Website, die zu Ihnen passt.</p>
+      </div>
+
+      <div class="deck-stage fu">
+        <button type="button" class="deck-arrow deck-arrow--prev" aria-label="Vorheriges Paket">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="deck" role="list">
+        <button type="button" class="deck-card" data-plan="basic" role="listitem" aria-pressed="false">
+          <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="assets/logo-mark-light.png" alt=""></span>
+          <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="assets/logo-mark-light.png" alt=""></span>
+          <img class="deck-emblem" src="assets/logo-mark-light.png" alt="" aria-hidden="true">
+          <div class="deck-body">
+            <div class="deck-name">Basic</div>
+            <div class="deck-price">ab 590&nbsp;€</div>
+            <ul class="deck-features">
+              <li>Bis zu 3 Seiten</li>
+              <li>Individuelles Design</li>
+              <li>Mobil optimiert</li>
+              <li>Kontaktformular</li>
+            </ul>
+            <span class="deck-cta">Auswählen</span>
+          </div>
+        </button>
+
+        <button type="button" class="deck-card" data-plan="essential" role="listitem" aria-pressed="false">
+          <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="assets/logo-mark-light.png" alt=""></span>
+          <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="assets/logo-mark-light.png" alt=""></span>
+          <img class="deck-emblem" src="assets/logo-mark-light.png" alt="" aria-hidden="true">
+          <div class="deck-body">
+            <div class="deck-name">Essential</div>
+            <div class="deck-price">ab 990&nbsp;€</div>
+            <ul class="deck-features">
+              <li>Bis zu 6 Seiten</li>
+              <li>Individuelles Design</li>
+              <li>Lokale SEO-Grundlage</li>
+              <li>Kontaktformular &amp; Karte</li>
+            </ul>
+            <span class="deck-cta">Auswählen</span>
+          </div>
+        </button>
+
+        <button type="button" class="deck-card" data-plan="premium" role="listitem" aria-pressed="false">
+          <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="assets/logo-mark-light.png" alt=""></span>
+          <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="assets/logo-mark-light.png" alt=""></span>
+          <img class="deck-emblem" src="assets/logo-mark-light.png" alt="" aria-hidden="true">
+          <div class="deck-body">
+            <div class="deck-name">Premium</div>
+            <div class="deck-price">ab 1.790&nbsp;€</div>
+            <ul class="deck-features">
+              <li>Unbegrenzte Seiten</li>
+              <li>Design mit Animationen</li>
+              <li>SEO &amp; Sichtbarkeit</li>
+              <li>Laufende Pflege inklusive</li>
+            </ul>
+            <span class="deck-cta">Auswählen</span>
+          </div>
+        </button>
+        </div>
+        <button type="button" class="deck-arrow deck-arrow--next" aria-label="Nächstes Paket">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <p class="deck-note">Alle Preise sind Richtwerte – der genaue Preis wird im kostenlosen Erstgespräch individuell ermittelt.</p>
+    </div>
+  </section>
+
   <!-- ─── PROJEKTE ───────────────────────────────────────────────── -->
   <section class="projects" id="projekte">
     <div class="wrap">
       <div class="fu">
-        <div class="eyebrow">Einblicke</div>
+        <div class="eyebrow"><span class="idx">05</span><span>Einblicke</span></div>
         <h2 class="sec-h2">So sehen unsere Websites aus</h2>
         <p class="sec-sub">Eine Auswahl aus unserer Arbeit – vom Malerbetrieb bis zum Reinigungsdienst.</p>
       </div>
-      <div class="proj-grid">
+      <div class="proj-list">
         <a class="proj fu" href="projekte/maler-kessler.html" target="_blank" rel="noopener">
-          <div class="proj-top"><h3>Malerbetrieb-Website</h3><span class="proj-kind">Handwerk</span></div>
-          <p>Auftritt für einen Malerbetrieb mit Leistungsübersicht, Referenzen und direkter Kontaktaufnahme für Anstrich- und Fassadenarbeiten.</p>
-          <div class="proj-tags"><span>Leistungen</span><span>Festpreis-Angebot</span><span>Lokal-SEO</span></div>
+          <div class="proj-index">01</div>
+          <div>
+            <div class="proj-top">
+              <h3>Malerbetrieb-Website <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></h3>
+              <span class="proj-kind">Handwerk</span>
+            </div>
+            <p>Auftritt für einen Malerbetrieb mit Leistungsübersicht, Referenzen und direkter Kontaktaufnahme für Anstrich- und Fassadenarbeiten.</p>
+            <div class="proj-tags"><span>Leistungen</span><span>Festpreis-Angebot</span><span>Lokal-SEO</span></div>
+          </div>
         </a>
-        <a class="proj fu" href="projekte/reinigung-klar.html" target="_blank" rel="noopener">
-          <div class="proj-top"><h3>Gebäudereinigung-Website</h3><span class="proj-kind">Dienstleistung</span></div>
-          <p>Klarer Auftritt für einen Reinigungsdienst – Leistungsübersicht für Büro-, Fenster- und Grundreinigung mit schneller Angebotsanfrage.</p>
-          <div class="proj-tags"><span>Leistungen</span><span>Angebotsanfrage</span><span>Terminflexibel</span></div>
+        <a class="proj fu" href="projekte/harry-style.html" target="_blank" rel="noopener">
+          <div class="proj-index">02</div>
+          <div>
+            <div class="proj-top">
+              <h3>Harry Style – Friseursalon <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></h3>
+              <span class="proj-kind">Beauty &amp; Lifestyle</span>
+            </div>
+            <p>Moderner Auftritt für einen Friseursalon in Berlin – Leistungsübersicht, Haartyp-Beratung und Bewertungen für direkte Terminbuchung.</p>
+            <div class="proj-tags"><span>Leistungen</span><span>Terminbuchung</span><span>Bewertungen</span></div>
+          </div>
         </a>
       </div>
     </div>
@@ -502,7 +1104,7 @@
   <section id="kontakt">
     <div class="wrap contact-grid">
       <div class="contact-info fu">
-        <div class="eyebrow">Kostenlose Erstberatung</div>
+        <div class="eyebrow"><span class="idx">06</span><span>Kostenlose Erstberatung</span></div>
         <h2>Jetzt Kontakt aufnehmen</h2>
         <p>Schildern Sie uns Ihr Projekt – wir melden uns innerhalb von 24 Stunden bei Ihnen. Unverbindlich und kostenlos.</p>
         <div class="contact-facts">
@@ -589,6 +1191,75 @@
     </div>
   </section>
 
+  <!-- ─── ANFAHRT ────────────────────────────────────────────────── -->
+  <section id="anfahrt">
+    <div class="wrap">
+      <div class="fu">
+        <div class="eyebrow"><span class="idx">07</span><span>Anfahrt</span></div>
+        <h2 class="sec-h2">Ihr Weg zu uns</h2>
+        <p class="sec-sub">Geben Sie Ihren Standort frei – wir zoomen zu Ihnen und zeichnen live die Route nach Hemer ein.</p>
+      </div>
+
+      <div class="route-card fu">
+        <div class="route-top">
+          <div class="route-point">
+            <span class="route-point-label">Start</span>
+            <span class="route-point-value" id="route-origin-label">Ihr Standort</span>
+          </div>
+          <div class="route-point route-point--end">
+            <span class="route-point-label">Ziel</span>
+            <span class="route-point-value">Hemer</span>
+          </div>
+        </div>
+
+        <div class="route-body">
+          <div class="route-stage" id="route-stage">
+            <div class="planet-view" id="planet-view">
+              <div class="planet" aria-hidden="true">
+                <div class="planet-texture"></div>
+                <div class="planet-clouds"></div>
+                <div class="planet-shade"></div>
+                <div class="planet-highlight"></div>
+                <div class="planet-rim"></div>
+              </div>
+              <div class="planet-hint">Noch kein Standort freigegeben</div>
+            </div>
+            <div class="route-map" id="route-map"></div>
+          </div>
+
+          <div class="route-stats">
+            <div class="route-stat">
+              <span class="route-stat-value is-empty" id="route-stat-km">–</span>
+              <span class="route-stat-label">Fahrstrecke</span>
+            </div>
+            <div class="route-stat">
+              <span class="route-stat-value is-empty" id="route-stat-time">–</span>
+              <span class="route-stat-label">Fahrzeit ca.</span>
+            </div>
+            <div class="route-stats-divider"></div>
+            <div class="route-actions">
+              <form class="route-addr-form" id="route-addr-form" autocomplete="off">
+                <label class="route-stat-label" for="route-addr-input">Ihre Adresse</label>
+                <div class="route-addr-row">
+                  <input type="text" id="route-addr-input" placeholder="Straße, PLZ Ort" required>
+                  <button type="submit" class="route-addr-submit" id="route-addr-btn" aria-label="Route berechnen">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+              </form>
+              <span class="route-or">oder</span>
+              <button type="button" class="route-cta route-cta--ghost" id="route-start-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"></circle></svg>
+                <span id="route-cta-label">Standort automatisch freigeben</span>
+              </button>
+              <p class="route-status" id="route-status"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── FOOTER ─────────────────────────────────────────────────── -->
   <footer class="footer">
     <div class="wrap">
@@ -621,7 +1292,336 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
+    /* ── Anfahrt: Planet → Zoom zum Standort → echte Route ── */
+    (function initRouteMap() {
+      const btn = document.getElementById('route-start-btn');
+      const status = document.getElementById('route-status');
+      const originLabel = document.getElementById('route-origin-label');
+      const planetView = document.getElementById('planet-view');
+      const mapEl = document.getElementById('route-map');
+      const statKm = document.getElementById('route-stat-km');
+      const statTime = document.getElementById('route-stat-time');
+      const addrForm = document.getElementById('route-addr-form');
+      const addrInput = document.getElementById('route-addr-input');
+      const addrBtn = document.getElementById('route-addr-btn');
+      if (!btn || !status || !planetView || !mapEl || typeof L === 'undefined') return;
+
+      function setStat(el, text) {
+        if (!el) return;
+        el.textContent = text;
+        el.classList.remove('is-empty');
+      }
+      function formatDuration(totalMinutes) {
+        const m = Math.round(totalMinutes);
+        if (m < 60) return `${m} Min`;
+        const h = Math.floor(m / 60), rem = m % 60;
+        return rem ? `${h} Std ${rem} Min` : `${h} Std`;
+      }
+
+      const HEMER = { lat: 51.3833, lng: 7.7667 };
+      const wait = ms => new Promise(r => setTimeout(r, ms));
+
+      function haversineKm(lat1, lon1, lat2, lon2) {
+        const R = 6371;
+        const toRad = d => d * Math.PI / 180;
+        const dLat = toRad(lat2 - lat1);
+        const dLon = toRad(lon2 - lon1);
+        const a = Math.sin(dLat / 2) ** 2 +
+          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      }
+      /* Position auf der equirektangularen Textur, die eine Koordinate ins Zentrum des Kreises dreht */
+      function bgPosForCoord(lat, lng, hx, hy) {
+        const fx = (lng + 180) / 360;
+        const fy = (90 - lat) / 180;
+        const posX = 100 * (0.5 - fx * hx) / (1 - hx);
+        const posY = 100 * (0.5 - fy * hy) / (1 - hy);
+        return { posX, posY };
+      }
+
+      function diveIntoPlanet(lat, lng) {
+        const tex = planetView.querySelector('.planet-texture');
+        const clouds = planetView.querySelector('.planet-clouds');
+        const planetEl = planetView.querySelector('.planet');
+        const hint = planetView.querySelector('.planet-hint');
+        if (!tex || !clouds || !planetEl) return Promise.resolve();
+
+        if (hint) hint.style.opacity = '0';
+
+        // aktuellen Rotations-Frame einfrieren, bevor die Animation gestoppt wird (verhindert einen Sprung)
+        [tex, clouds].forEach(el => {
+          el.style.backgroundPosition = getComputedStyle(el).backgroundPosition;
+          el.style.animation = 'none';
+        });
+        void tex.offsetWidth;
+
+        const { posX, posY } = bgPosForCoord(lat, lng, 2, 2.2);
+        tex.style.backgroundSize = '200% 220%';
+        clouds.style.backgroundSize = '200% 220%';
+        tex.style.backgroundPosition = posX + '% ' + posY + '%';
+        clouds.style.backgroundPosition = posX + '% ' + posY + '%';
+
+        return wait(900).then(() => {
+          planetEl.style.transform = 'scale(16)';
+          return wait(2100);
+        });
+      }
+
+      function bearingDeg(lat1, lon1, lat2, lon2) {
+        const toRad = d => d * Math.PI / 180, toDeg = r => r * 180 / Math.PI;
+        const y = Math.sin(toRad(lon2 - lon1)) * Math.cos(toRad(lat2));
+        const x = Math.cos(toRad(lat1)) * Math.sin(toRad(lat2)) -
+          Math.sin(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.cos(toRad(lon2 - lon1));
+        return (toDeg(Math.atan2(y, x)) + 360) % 360;
+      }
+
+      const carHtml = `<div class="route-car-icon" id="route-car-inner">
+        <svg width="30" height="16" viewBox="0 0 34 18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12h1.5l2-5h17l3.5 5H31"></path>
+          <path d="M4 12v-1a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1"></path>
+          <circle cx="9" cy="13.5" r="2.2" fill="#0A0C10"></circle>
+          <circle cx="24" cy="13.5" r="2.2" fill="#0A0C10"></circle>
+        </svg></div>`;
+      const carIcon = L.divIcon({ className: 'route-car-marker', html: carHtml, iconSize: [30, 16], iconAnchor: [15, 8] });
+
+      let map = null;
+
+      function ensureMap() {
+        if (map) return map;
+        map = L.map(mapEl, { zoomControl: true, attributionControl: true, scrollWheelZoom: false });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+        }).addTo(map);
+        L.marker([HEMER.lat, HEMER.lng]).addTo(map).bindPopup('Noventry Webdesign · Hemer');
+        return map;
+      }
+
+      async function geocodeAddress(query) {
+        const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=de&q=${encodeURIComponent(query)}`;
+        const res = await fetch(url, { headers: { 'Accept-Language': 'de' } });
+        if (!res.ok) throw new Error('geocoding failed');
+        const data = await res.json();
+        if (!data || !data[0]) throw new Error('no result');
+        return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+      }
+
+      async function fetchRoute(origin, dest) {
+        const url = `https://router.project-osrm.org/route/v1/driving/${origin.lng},${origin.lat};${dest.lng},${dest.lat}?overview=full&geometries=geojson`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('routing failed');
+        const data = await res.json();
+        const route = data.routes && data.routes[0];
+        if (!route) throw new Error('no route found');
+        return {
+          coords: route.geometry.coordinates.map(c => [c[1], c[0]]),
+          distanceKm: route.distance / 1000,
+          durationMin: route.duration / 60,
+        };
+      }
+
+      function driveCarAlong(coords) {
+        const dists = [0];
+        for (let i = 1; i < coords.length; i++) {
+          dists.push(dists[i - 1] + haversineKm(coords[i - 1][0], coords[i - 1][1], coords[i][0], coords[i][1]));
+        }
+        const total = dists[dists.length - 1] || 1;
+
+        const trail = L.polyline([coords[0]], { color: '#2E5BFF', weight: 4, opacity: .95 }).addTo(map);
+        const car = L.marker(coords[0], { icon: carIcon, zIndexOffset: 1000 }).addTo(map);
+
+        const duration = 4200;
+        const start = performance.now();
+        return new Promise(resolve => {
+          function frame(now) {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+            const targetDist = eased * total;
+            let idx = 0;
+            while (idx < dists.length - 1 && dists[idx + 1] < targetDist) idx++;
+            const segStart = dists[idx], segEnd = dists[idx + 1] ?? segStart;
+            const segT = segEnd > segStart ? (targetDist - segStart) / (segEnd - segStart) : 0;
+            const p1 = coords[idx], p2 = coords[idx + 1] || p1;
+            const lat = p1[0] + (p2[0] - p1[0]) * segT;
+            const lng = p1[1] + (p2[1] - p1[1]) * segT;
+            car.setLatLng([lat, lng]);
+            const inner = document.getElementById('route-car-inner');
+            if (inner) inner.style.transform = `rotate(${bearingDeg(p1[0], p1[1], p2[0], p2[1]) - 90}deg)`;
+            trail.setLatLngs(coords.slice(0, idx + 1).concat([[lat, lng]]));
+            if (t < 1) requestAnimationFrame(frame);
+            else resolve();
+          }
+          requestAnimationFrame(frame);
+        });
+      }
+
+      async function showRoute(userLat, userLng) {
+        ensureMap();
+        status.textContent = 'Wir zoomen zu Ihrem Standort …';
+
+        const dive = diveIntoPlanet(userLat, userLng);
+
+        await wait(1300);
+        mapEl.classList.add('is-visible');
+        map.invalidateSize();
+        map.setView([userLat, userLng], 3, { animate: false });
+        L.marker([userLat, userLng]).addTo(map).bindPopup('Ihr Standort');
+        map.flyTo([userLat, userLng], 13, { duration: 2.2 });
+
+        await dive;
+        planetView.classList.add('is-hidden');
+        await wait(950);
+
+        status.textContent = 'Route wird berechnet …';
+        let coords, distanceKm, durationMin, isEstimate = false;
+        try {
+          const route = await fetchRoute({ lat: userLat, lng: userLng }, HEMER);
+          coords = route.coords;
+          distanceKm = route.distanceKm;
+          durationMin = route.durationMin;
+        } catch (err) {
+          coords = [[userLat, userLng], [HEMER.lat, HEMER.lng]];
+          distanceKm = haversineKm(userLat, userLng, HEMER.lat, HEMER.lng);
+          durationMin = distanceKm / 70 * 60; // grobe Schätzung bei 70 km/h, falls Routing-Dienst nicht erreichbar
+          isEstimate = true;
+        }
+
+        setStat(statKm, `${Math.round(distanceKm)} km${isEstimate ? '*' : ''}`);
+        setStat(statTime, formatDuration(durationMin));
+
+        const bounds = L.latLngBounds(coords);
+        map.flyToBounds(bounds, { paddingTopLeft: [40, 40], paddingBottomRight: [40, 40], duration: 1.6 });
+        await wait(1700);
+
+        status.textContent = isEstimate
+          ? '* Luftlinie – Route wird eingezeichnet …'
+          : 'Route wird eingezeichnet …';
+        await driveCarAlong(coords);
+        status.textContent = isEstimate ? '* Luftlinien-Schätzung. Angekommen!' : 'Angekommen!';
+      }
+
+      // Eleganter Ersatz-Ablauf ohne Fehlermeldung: wenn kein Nutzerstandort verfügbar ist
+      // (Standort abgelehnt, nicht ermittelbar oder nicht unterstützt), zoomt der Satellit
+      // stattdessen direkt zu unserem eigenen Standort in Hemer.
+      async function showCompanyLocation() {
+        ensureMap();
+        status.textContent = '';
+
+        const dive = diveIntoPlanet(HEMER.lat, HEMER.lng);
+
+        await wait(1300);
+        mapEl.classList.add('is-visible');
+        map.invalidateSize();
+        map.setView([HEMER.lat, HEMER.lng], 3, { animate: false });
+        map.flyTo([HEMER.lat, HEMER.lng], 14, { duration: 2.2 });
+
+        await dive;
+        planetView.classList.add('is-hidden');
+        await wait(950);
+
+        status.textContent = 'So finden Sie uns in Hemer.';
+      }
+
+      const ctaLabel = document.getElementById('route-cta-label');
+      let pending = false;
+
+      function setControlsDisabled(disabled) {
+        btn.disabled = disabled;
+        if (addrInput) addrInput.disabled = disabled;
+        if (addrBtn) addrBtn.disabled = disabled;
+      }
+
+      function hideAllControls() {
+        btn.style.display = 'none';
+        if (addrForm) addrForm.style.display = 'none';
+        const or = document.querySelector('.route-or');
+        if (or) or.style.display = 'none';
+      }
+
+      // Kein Fehlertext für den Nutzer: Button bleibt bedienbar, wir zeigen still unseren
+      // eigenen Standort statt einer Fehlermeldung (siehe showCompanyLocation()).
+      function resetButtonQuietly() {
+        pending = false;
+        setControlsDisabled(false);
+        if (ctaLabel) ctaLabel.textContent = 'Erneut versuchen';
+        originLabel.textContent = 'Hemer';
+      }
+
+      if (addrForm) {
+        addrForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (pending || !addrInput) return;
+          const query = addrInput.value.trim();
+          if (!query) return;
+
+          pending = true;
+          setControlsDisabled(true);
+          status.textContent = 'Adresse wird gesucht …';
+
+          try {
+            const loc = await geocodeAddress(query);
+            hideAllControls();
+            originLabel.textContent = query;
+            showRoute(loc.lat, loc.lng);
+          } catch (err) {
+            status.textContent = 'Adresse konnte nicht gefunden werden. Bitte prüfen Sie die Eingabe.';
+            pending = false;
+            setControlsDisabled(false);
+          }
+        });
+      }
+
+      async function requestLocation() {
+        if (pending) return;
+        pending = true;
+        setControlsDisabled(true);
+        if (ctaLabel) ctaLabel.textContent = 'Standort wird ermittelt …';
+        status.textContent = 'Bitte erlauben Sie den Standortzugriff im Browser-Hinweis …';
+
+        if (!('geolocation' in navigator)) {
+          pending = false;
+          btn.style.display = 'none';
+          originLabel.textContent = 'Hemer';
+          showCompanyLocation();
+          return;
+        }
+
+        // Vorab prüfen, ob der Zugriff für diese Seite bereits dauerhaft blockiert ist –
+        // in dem Fall zeigt der Browser gar keinen Hinweis mehr an und getCurrentPosition
+        // schlägt sofort wieder fehl, ohne dass der Nutzer eine Chance zur Freigabe bekommt.
+        // Statt einer Fehlermeldung zeigen wir dann elegant unseren eigenen Standort.
+        if (navigator.permissions && navigator.permissions.query) {
+          try {
+            const perm = await navigator.permissions.query({ name: 'geolocation' });
+            if (perm.state === 'denied') {
+              resetButtonQuietly();
+              showCompanyLocation();
+              return;
+            }
+          } catch (e) { /* Permissions API nicht verfügbar – direkt weiter mit getCurrentPosition */ }
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            hideAllControls();
+            originLabel.textContent = 'Ihr Standort';
+            showRoute(pos.coords.latitude, pos.coords.longitude);
+          },
+          () => {
+            // Standort abgelehnt, nicht ermittelbar oder Zeitüberschreitung: keine Fehlermeldung,
+            // stattdessen hochwertig zu unserem eigenen Standort in Hemer zoomen.
+            resetButtonQuietly();
+            showCompanyLocation();
+          },
+          { enableHighAccuracy: false, timeout: 15000, maximumAge: 60000 }
+        );
+      }
+
+      btn.addEventListener('click', requestLocation);
+    })();
+
     /* ── Kontaktformular: Web3Forms ── */
     (function initContactForm() {
       const WEB3FORMS_ACCESS_KEY = '622cf673-2e0c-4958-886c-7cd2205aefb2';
@@ -680,6 +1680,156 @@
       });
     })();
 
+    /* ── Hero-Logo: wächst beim Scrollen und verpufft am Sektionsende ── */
+    (function initHeroLogoScroll() {
+      const wrap = document.querySelector('.hero-bg-logo-wrap');
+      const hero = document.querySelector('.hero');
+      if (!wrap || !hero) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const BASE_OPACITY = .36;
+      const ALIGN_OFFSET_Y = 60; // schiebt den großen Balken auf Höhe des "N" von NOVENTRY
+      let ticking = false;
+
+      function update() {
+        const heroHeight = hero.offsetHeight || window.innerHeight;
+        const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+        const scale = 1 + progress * 1.3;
+        const fade  = 1 - Math.pow(progress, 6);
+        wrap.style.transform = `translateY(${ALIGN_OFFSET_Y}px) scale(${scale})`;
+        wrap.style.opacity = String(BASE_OPACITY * fade);
+        ticking = false;
+      }
+      function onScroll() {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }
+
+      update();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', update);
+    })();
+
+    /* ── Über Noventry: Brief öffnet sich von allen Seiten beim Scrollen ── */
+    (function initLetterOpen() {
+      const stage  = document.querySelector('.letter-stage');
+      const sticky = document.querySelector('.letter-sticky');
+      const flapTop    = document.querySelector('.envelope-flap--top');
+      const flapRight  = document.querySelector('.envelope-flap--right');
+      const flapLeft   = document.querySelector('.envelope-flap--left');
+      const flapBottom = document.querySelector('.envelope-flap--bottom');
+      const seal   = document.querySelector('.envelope-seal');
+      const envelope = document.querySelector('.envelope');
+      const paper = document.querySelector('.letter-paper');
+      const panelHead = document.querySelector('.letter-content .about-head');
+      const panelText = document.querySelector('.letter-content .about-text');
+      if (!stage || !sticky || !flapTop || !flapRight || !flapLeft || !flapBottom || !paper || !panelHead || !panelText) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        paper.style.opacity = '1';
+        paper.style.transform = 'scale(1)';
+        panelHead.style.opacity = '1';
+        panelText.style.opacity = '1';
+        return;
+      }
+
+      const ease = p => 1 - Math.pow(1 - p, 3);
+      const clamp01 = v => Math.min(Math.max(v, 0), 1);
+      const phase = (p, start, len) => clamp01((p - start) / len);
+
+      function setPanel(el, foldP) {
+        const eased = ease(foldP);
+        el.style.opacity = String(eased);
+        el.style.transform = `rotateX(${-95 * (1 - eased)}deg) translateY(${28 * (1 - eased)}px)`;
+      }
+      setPanel(panelHead, 0);
+      setPanel(panelText, 0);
+
+      let ticking = false;
+      const NAV_H = 69;
+
+      function update() {
+        const rect = stage.getBoundingClientRect();
+        const total = Math.max(stage.offsetHeight - sticky.offsetHeight, 1);
+        const scrolled = NAV_H - rect.top;
+        const progress = clamp01(scrolled / total);
+
+        // 1) Siegel löst sich, dann öffnen sich die vier Klappen nacheinander
+        const sealP = phase(progress, 0, 0.1);
+        seal.style.opacity = String(1 - sealP);
+        seal.style.transform = `translate(-50%, -50%) scale(${1 - sealP * 0.5})`;
+
+        const topP    = phase(progress, 0.02, 0.13);
+        const rightP  = phase(progress, 0.10, 0.13);
+        const leftP   = phase(progress, 0.18, 0.13);
+        const bottomP = phase(progress, 0.26, 0.14);
+        flapTop.style.transform    = `rotateX(${-166 * ease(topP)}deg)`;
+        flapRight.style.transform  = `rotateY(${ 166 * ease(rightP)}deg)`;
+        flapLeft.style.transform   = `rotateY(${-166 * ease(leftP)}deg)`;
+        flapBottom.style.transform = `rotateX(${ 166 * ease(bottomP)}deg)`;
+
+        // 2) Umschlag löst sich vollständig auf
+        const envFadeP = phase(progress, 0.34, 0.2);
+        envelope.style.opacity = String(1 - envFadeP);
+        envelope.style.visibility = envFadeP >= 1 ? 'hidden' : 'visible';
+
+        // 3) Die Brief-Fläche wächst an derselben Stelle heran
+        const paperP = phase(progress, 0.3, 0.24);
+        const paperEased = ease(paperP);
+        paper.style.opacity = String(paperEased);
+        paper.style.transform = `scale(${0.55 + 0.45 * paperEased})`;
+
+        // 4) Der Text klappt Stück für Stück auf: erst Überschrift, dann Fließtext
+        setPanel(panelHead, phase(progress, 0.48, 0.2));
+        setPanel(panelText, phase(progress, 0.64, 0.24));
+
+        ticking = false;
+      }
+      function onScroll() {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }
+
+      update();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', update);
+    })();
+
+    /* ── Angebote: Karten-Deck ── */
+    (function initDeck() {
+      const cards = Array.from(document.querySelectorAll('.deck-card'));
+      const prevBtn = document.querySelector('.deck-arrow--prev');
+      const nextBtn = document.querySelector('.deck-arrow--next');
+      if (!cards.length) return;
+      let selected = 1; // Essential startet vorne
+
+      function layout() {
+        const remaining = cards.map((c, i) => i).filter(i => i !== selected).sort((a, b) => a - b);
+        cards.forEach((card, i) => {
+          card.classList.remove('is-front', 'is-left', 'is-right');
+          card.setAttribute('aria-pressed', 'false');
+          if (i === selected) {
+            card.classList.add('is-front');
+            card.setAttribute('aria-pressed', 'true');
+          } else if (i === remaining[0]) {
+            card.classList.add('is-left');
+          } else {
+            card.classList.add('is-right');
+          }
+        });
+      }
+      cards.forEach((card, i) => {
+        card.addEventListener('click', () => { selected = i; layout(); });
+      });
+      if (prevBtn) prevBtn.addEventListener('click', () => {
+        selected = (selected - 1 + cards.length) % cards.length;
+        layout();
+      });
+      if (nextBtn) nextBtn.addEventListener('click', () => {
+        selected = (selected + 1) % cards.length;
+        layout();
+      });
+      layout();
+    })();
+
     /* ── Scroll-Einblendungen ── */
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
@@ -707,6 +1857,7 @@
       menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
     })();
+
   </script>
 </body>
 </html>
