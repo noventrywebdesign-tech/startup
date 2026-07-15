@@ -433,15 +433,16 @@
       display:flex; flex-direction:column; align-items:stretch; justify-content:center;
       overflow:hidden;
     }
-    .team-sticky-inner{ position:relative; height:420px; }
+    .team-sticky-inner{ position:relative; height:620px; }
     .team-slide{
       position:absolute; inset:0;
-      display:grid; grid-template-columns:.85fr 1fr; gap:64px; align-items:center;
+      display:flex; align-items:center; justify-content:center;
       opacity:0; pointer-events:none;
       will-change:transform, opacity;
     }
+    .team-slide-inner{ display:flex; flex-direction:column; gap:28px; width:min(46vw, 360px); }
     .team-photo{
-      position:relative; aspect-ratio:3/4; max-height:420px; border-radius:20px; overflow:hidden;
+      position:relative; width:100%; aspect-ratio:3/4; border-radius:20px; overflow:hidden;
       background:linear-gradient(155deg, var(--panel-2) 0%, #05070D 100%);
       border:1px solid var(--line-soft);
       display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
@@ -471,11 +472,11 @@
       .team-sticky{ position:relative; top:0; height:auto; padding:8px 0 56px; overflow:visible; }
       .team-sticky-inner{ height:auto; }
       .team-slide{
-        position:relative; inset:auto; grid-template-columns:1fr; gap:28px;
+        position:relative; inset:auto;
         opacity:1 !important; transform:none !important; pointer-events:auto;
         margin-bottom:56px;
       }
-      .team-photo{ max-height:none; }
+      .team-slide-inner{ width:min(70vw, 340px); margin:0 auto; }
       .team-progress{ display:none; }
     }
 
@@ -989,38 +990,44 @@
       <div class="team-sticky">
         <div class="wrap team-sticky-inner">
           <div class="team-slide" data-slide="0">
-            <div class="team-photo">
-              <span class="team-photo-mono">TB</span>
-              <span class="team-photo-hint">Foto folgt</span>
-            </div>
-            <div class="team-info">
-              <h3 class="team-name">Tim Bimberg</h3>
-              <span class="team-role">Mitgründer · Noventry Webdesign</span>
-              <p class="team-bio">Ich kümmere mich um jedes Projekt, als wäre es mein eigenes – von der ersten Skizze bis zum Livegang.</p>
+            <div class="team-slide-inner">
+              <div class="team-photo">
+                <span class="team-photo-mono">TB</span>
+                <span class="team-photo-hint">Foto folgt</span>
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Tim Bimberg</h3>
+                <span class="team-role">Mitgründer · Noventry Webdesign</span>
+                <p class="team-bio">Ich kümmere mich um jedes Projekt, als wäre es mein eigenes – von der ersten Skizze bis zum Livegang.</p>
+              </div>
             </div>
           </div>
 
           <div class="team-slide" data-slide="1">
-            <div class="team-photo">
-              <span class="team-photo-mono">LS</span>
-              <span class="team-photo-hint">Foto folgt</span>
-            </div>
-            <div class="team-info">
-              <h3 class="team-name">Lewin Steppuhn</h3>
-              <span class="team-role">Mitgründer · Noventry Webdesign</span>
-              <p class="team-bio">Für mich zählt nicht die Schablone, sondern die Website, die wirklich zu Ihrem Unternehmen passt.</p>
+            <div class="team-slide-inner">
+              <div class="team-photo">
+                <span class="team-photo-mono">LS</span>
+                <span class="team-photo-hint">Foto folgt</span>
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Lewin Steppuhn</h3>
+                <span class="team-role">Mitgründer · Noventry Webdesign</span>
+                <p class="team-bio">Für mich zählt nicht die Schablone, sondern die Website, die wirklich zu Ihrem Unternehmen passt.</p>
+              </div>
             </div>
           </div>
 
           <div class="team-slide" data-slide="2">
-            <div class="team-photo team-photo--wide">
-              <span class="team-photo-mono">TB &amp; LS</span>
-              <span class="team-photo-hint">Foto folgt</span>
-            </div>
-            <div class="team-info">
-              <h3 class="team-name">Tim &amp; Lewin</h3>
-              <span class="team-role">Noventry Webdesign · Hemer</span>
-              <p class="team-bio">Zusammen bringen wir jedes Projekt über die Ziellinie – mit Handschlag statt Hotline.</p>
+            <div class="team-slide-inner">
+              <div class="team-photo team-photo--wide">
+                <span class="team-photo-mono">TB &amp; LS</span>
+                <span class="team-photo-hint">Foto folgt</span>
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Unser Team</h3>
+                <span class="team-role">Noventry Webdesign · Hemer</span>
+                <p class="team-bio">Zusammen bringen wir jedes Projekt über die Ziellinie – mit Handschlag statt Hotline.</p>
+              </div>
             </div>
           </div>
         </div>
