@@ -1514,7 +1514,10 @@
         const fx = (lng + 180) / 360;
         const fy = (90 - lat) / 180;
         const posX = 100 * (0.5 - fx * hx) / (1 - hx);
-        const posY = 100 * (0.5 - fy * hy) / (1 - hy);
+        // Y auf 0–100% begrenzen: außerhalb dieses Bereichs würde die Textur über den
+        // Bildrand hinausrutschen und oben/unten einen schwarzen Spalt freigeben
+        // (passiert z.B. bei Hemers eigenem Breitengrad ~51°N ohne diese Begrenzung).
+        const posY = Math.min(Math.max(100 * (0.5 - fy * hy) / (1 - hy), 0), 100);
         return { posX, posY };
       }
 
