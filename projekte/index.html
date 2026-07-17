@@ -875,11 +875,11 @@
     .route-status a{ color:var(--accent-2); text-decoration:underline; }
 
     /* ── Footer: schwebende Card mit riesiger Hintergrund-Typografie darunter ── */
-    .footer{ position:relative; padding:80px 0 190px; overflow:hidden; }
+    .footer{ position:relative; padding:80px 0 100px; overflow:hidden; }
     .footer-bg-word{
-      position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+      position:absolute; left:50%; bottom:0; transform:translate(-50%, 50%);
       font-family:'Questrial'; font-size:clamp(5rem, 17vw, 13.5rem); line-height:1;
-      color:rgba(255,255,255,.06); white-space:nowrap; letter-spacing:.02em;
+      color:rgba(255,255,255,.035); white-space:nowrap; letter-spacing:.02em;
       pointer-events:none; user-select:none; z-index:0;
     }
     .footer-card{
@@ -928,7 +928,7 @@
       .footer-brand-col{ grid-column:1 / -1; }
     }
     @media (max-width:640px){
-      .footer{ padding:64px 0 110px; }
+      .footer{ padding:64px 0 55px; }
       .footer-card{ padding:48px 24px 28px; border-radius:24px; }
       .footer-card-grid{ grid-template-columns:1fr; row-gap:32px; }
       .footer-bg-word{ font-size:15vw; }
