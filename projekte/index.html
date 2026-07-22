@@ -587,14 +587,13 @@
       position:relative; aspect-ratio:3/4; border-radius:20px; overflow:hidden;
       background:linear-gradient(155deg, var(--panel-2) 0%, #05070D 100%);
       border:1px solid var(--line-soft);
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
     }
-    .team-photo-mono{
-      font-family:'Questrial'; font-size:5rem; color:rgba(255,255,255,.14); letter-spacing:.02em;
+    .team-photo-img{
+      width:100%; height:100%; object-fit:cover; object-position:top center;
+      filter:grayscale(.15) contrast(1.03);
+      transition:transform .5s ease;
     }
-    .team-photo-hint{
-      font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
-    }
+    .team-card:hover .team-photo-img{ transform:scale(1.03); }
     .team-name{ font-family:'Questrial'; font-size:1.7rem; color:#fff; margin-bottom:6px; }
     .team-role{
       display:block; font-family:var(--mono); font-size:.72rem; letter-spacing:.08em;
@@ -1356,8 +1355,7 @@
       <div class="team-grid">
         <div class="team-card fu">
           <div class="team-photo">
-            <span class="team-photo-mono">TB</span>
-            <span class="team-photo-hint">Foto folgt</span>
+            <img class="team-photo-img" src="../assets/team-tim-bimberg.jpg" alt="Tim Bimberg, Gründer von Noventry Webdesign" width="1000" height="1335">
           </div>
           <div class="team-info">
             <h3 class="team-name">Tim Bimberg</h3>
@@ -1368,8 +1366,7 @@
 
         <div class="team-card fu">
           <div class="team-photo">
-            <span class="team-photo-mono">LS</span>
-            <span class="team-photo-hint">Foto folgt</span>
+            <img class="team-photo-img" src="../assets/team-lewin-steppuhn.jpg" alt="Lewin Steppuhn, Gründer von Noventry Webdesign" width="1000" height="1333">
           </div>
           <div class="team-info">
             <h3 class="team-name">Lewin Steppuhn</h3>
