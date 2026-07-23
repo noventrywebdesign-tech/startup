@@ -679,7 +679,7 @@
     /* ── Angebote: Karten-Deck ── */
     #angebote{ position:relative; border-top:1px solid var(--line-soft); overflow-x:hidden; }
     .deck-stage{ position:relative; max-width:1040px; margin:76px auto 0; }
-    .deck{ position:relative; width:860px; max-width:100%; margin:0 auto; min-height:720px; }
+    .deck{ position:relative; width:860px; max-width:100%; margin:0 auto; min-height:900px; }
     .deck-arrow{
       position:absolute; top:50%; transform:translateY(-50%);
       width:52px; height:52px; border-radius:50%; z-index:6; flex:none;
@@ -697,7 +697,7 @@
     }
     .deck-card{
       position:absolute; top:0; left:50%;
-      width:390px; aspect-ratio:5/7; height:auto;
+      width:390px; height:auto;
       border-radius:18px;
       background:
         radial-gradient(1px 1px at 12% 16%, rgba(255,255,255,.9), transparent 70%),
@@ -747,8 +747,10 @@
     }
     .deck-body{ display:flex; flex-direction:column; align-items:center; gap:12px; flex:1; }
     .deck-name{ font-family:'Questrial'; font-size:1.55rem; color:#fff; letter-spacing:.04em; text-transform:uppercase; }
+    .deck-star{ color:var(--accent-2); font-size:.85em; }
     .deck-price{ font-family:var(--mono); font-size:1.1rem; color:var(--accent-2); }
-    .deck-features{ list-style:none; font-size:.92rem; color:var(--slate); display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+    .deck-desc{ font-size:.86rem; color:var(--slate); line-height:1.5; max-width:280px; }
+    .deck-features{ list-style:none; font-size:.92rem; color:var(--slate); display:flex; flex-direction:column; gap:8px; margin-top:6px; text-align:left; }
     .deck-features li::before{ content:'✓ '; color:var(--accent-2); }
     .deck-cta{
       margin-top:auto; font-family:var(--mono); font-size:.76rem; letter-spacing:.08em; text-transform:uppercase;
@@ -758,7 +760,7 @@
     .deck-note{ text-align:center; color:var(--muted); font-size:.85rem; margin-top:40px; }
     @media (max-width:640px){
       .deck-stage{ margin-top:56px; }
-      .deck{ min-height:520px; }
+      .deck{ min-height:1040px; }
       .deck-card{ width:min(70vw, 300px); padding:22px 20px; }
       .deck-card.is-left{ transform:translateX(-50%) translate(-112px, 38px) rotate(-10deg) scale(.78); }
       .deck-card.is-right{ transform:translateX(-50%) translate(112px, 38px) rotate(10deg) scale(.78); }
@@ -1471,37 +1473,43 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
         <div class="deck" role="list">
-        <button type="button" class="deck-card" data-plan="basic" role="listitem" aria-pressed="false">
-          <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
-          <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
-          <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
-          <div class="deck-body">
-            <div class="deck-name">Basic</div>
-            <div class="deck-price">ab 590&nbsp;€</div>
-            <ul class="deck-features">
-              <li>Bis zu 3 Seiten</li>
-              <li>Individuelles Design</li>
-              <li>Mobil optimiert</li>
-              <li>Kontaktformular</li>
-            </ul>
-            <span class="deck-cta">Auswählen</span>
-          </div>
-        </button>
-
         <button type="button" class="deck-card" data-plan="essential" role="listitem" aria-pressed="false">
           <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
           <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
           <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
           <div class="deck-body">
             <div class="deck-name">Essential</div>
-            <div class="deck-price">ab 990&nbsp;€</div>
+            <div class="deck-price">ab 850&nbsp;€</div>
+            <p class="deck-desc">Der perfekte Einstieg für kleine Unternehmen und Selbstständige.</p>
             <ul class="deck-features">
-              <li>Bis zu 6 Seiten</li>
-              <li>Individuelles Design</li>
-              <li>Lokale SEO-Grundlage</li>
-              <li>Kontaktformular &amp; Karte</li>
+              <li>Individuell gestalteter Onepager oder kleine Website</li>
+              <li>Modernes Premium-Design</li>
+              <li>Optimiert für Smartphone, Tablet &amp; Desktop</li>
+              <li>Suchmaschinenfreundlicher Aufbau</li>
+              <li>Schnelle Ladezeiten</li>
+              <li>Persönliche Beratung &amp; individuelle Umsetzung</li>
             </ul>
-            <span class="deck-cta">Auswählen</span>
+            <span class="deck-cta">Projekt anfragen</span>
+          </div>
+        </button>
+
+        <button type="button" class="deck-card" data-plan="business" role="listitem" aria-pressed="false">
+          <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
+          <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
+          <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
+          <div class="deck-body">
+            <div class="deck-name">Business <span class="deck-star" aria-hidden="true">★</span></div>
+            <div class="deck-price">ab 1.690&nbsp;€</div>
+            <p class="deck-desc">Für Unternehmen, die online professionell auftreten und neue Kunden gewinnen möchten.</p>
+            <ul class="deck-features">
+              <li>Individuell entwickelte Mehrseiten-Website</li>
+              <li>Alles aus Essential</li>
+              <li>Erweiterte SEO-Optimierung</li>
+              <li>Individuelle Animationen &amp; hochwertige Effekte</li>
+              <li>Leistungs-, Referenz- und Unternehmensseiten</li>
+              <li>Conversion-optimierter Seitenaufbau</li>
+            </ul>
+            <span class="deck-cta">Projekt anfragen</span>
           </div>
         </button>
 
@@ -1511,14 +1519,17 @@
           <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
           <div class="deck-body">
             <div class="deck-name">Premium</div>
-            <div class="deck-price">ab 1.790&nbsp;€</div>
+            <div class="deck-price">ab 2.990&nbsp;€</div>
+            <p class="deck-desc">Die individuelle Komplettlösung für Unternehmen mit besonderen Anforderungen.</p>
             <ul class="deck-features">
-              <li>Unbegrenzte Seiten</li>
-              <li>Design mit Animationen</li>
-              <li>SEO &amp; Sichtbarkeit</li>
-              <li>Laufende Pflege inklusive</li>
+              <li>Alles aus Business</li>
+              <li>Individuelle Funktionen &amp; Webanwendungen</li>
+              <li>Automatisierungen &amp; Schnittstellen</li>
+              <li>KI-Integrationen &amp; Chatbots (optional)</li>
+              <li>Maßgeschneiderte Lösungen für Ihr Unternehmen</li>
+              <li>Priorisierte Betreuung während des Projekts</li>
             </ul>
-            <span class="deck-cta">Auswählen</span>
+            <span class="deck-cta">Projekt anfragen</span>
           </div>
         </button>
         </div>
@@ -2549,7 +2560,7 @@
       const prevBtn = document.querySelector('.deck-arrow--prev');
       const nextBtn = document.querySelector('.deck-arrow--next');
       if (!cards.length) return;
-      let selected = 1; // Essential startet vorne
+      let selected = 1; // Business startet vorne
 
       function layout() {
         const remaining = cards.map((c, i) => i).filter(i => i !== selected).sort((a, b) => a - b);
