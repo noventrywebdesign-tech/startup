@@ -1,6 +1,6 @@
 {
   "redirects": [
-    { "source": "/projekte/index.html", "destination": "/", "permanent": true }
+    { "source": "/projekte/index.html", "destination": "/", "statusCode": 301 }
   ],
   "headers": [
     {
