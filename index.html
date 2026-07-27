@@ -1041,6 +1041,14 @@
     .route-cta--ghost:hover{ border-color:var(--accent-2); color:#fff; box-shadow:none; }
     .route-status{ font-size:.84rem; color:var(--slate); min-height:1.2em; }
     .route-status a{ color:var(--accent-2); text-decoration:underline; }
+    .inapp-browser-hint{
+      display:flex; align-items:flex-start; gap:10px; margin-top:16px;
+      padding:14px 16px; border-radius:12px;
+      background:var(--accent-soft); border:1px solid rgba(46,91,255,.3);
+      font-size:.82rem; line-height:1.5; color:var(--slate);
+    }
+    .inapp-browser-hint svg{ flex:none; margin-top:1px; color:var(--accent-2); }
+    .inapp-browser-hint strong{ color:#fff; }
 
     /* ── Footer: schwebende Card mit riesiger Hintergrund-Typografie darunter ── */
     .footer{ position:relative; padding:80px 0 100px; overflow:hidden; }
@@ -1876,6 +1884,11 @@
             Kontakt
           </a>
         </div>
+
+        <p class="inapp-browser-hint" id="inapp-browser-hint" hidden>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Für die automatische Standortermittlung diese Seite bitte im Browser öffnen: oben rechts auf <strong>•••</strong> tippen und <strong>„Im Browser öffnen"</strong> wählen. Alternativ funktioniert die Adresseingabe oben auch direkt hier.</span>
+        </p>
       </aside>
 
       <div class="anfahrt-map-col fu">
@@ -2050,6 +2063,20 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     /* ── Anfahrt: Planet → Zoom zum Standort → echte Route ── */
+    /* ── Hinweis in Instagram-/Facebook-/TikTok-In-App-Browsern ──
+       Diese eingebauten Browser blockieren die Geolocation-API häufig komplett,
+       ohne je einen Freigabe-Dialog zu zeigen (Entscheidung liegt bei der App,
+       nicht bei uns). Wir erkennen sie am User-Agent und weisen aktiv auf
+       "Im Browser öffnen" hin, wo die automatische Standortermittlung normal
+       funktioniert. */
+    (function initInAppBrowserHint() {
+      const ua = navigator.userAgent || '';
+      const isInApp = /Instagram|FBAN|FBAV|FB_IAB|TikTok|musical_ly/i.test(ua);
+      if (!isInApp) return;
+      const hint = document.getElementById('inapp-browser-hint');
+      if (hint) hint.hidden = false;
+    })();
+
     (function initRouteMap() {
       const btn = document.getElementById('route-start-btn');
       const status = document.getElementById('route-status');
