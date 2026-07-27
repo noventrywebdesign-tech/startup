@@ -731,6 +731,10 @@
       transform:translateX(-50%) translate(212px, 60px) rotate(11deg) scale(.8);
       z-index:1; opacity:.5; filter:brightness(.6) saturate(.8);
     }
+    .deck-card.is-back{
+      transform:translateX(-50%) translateY(60px) scale(.6);
+      z-index:0; opacity:0; pointer-events:none;
+    }
     .deck-card:hover:not(.is-front){ filter:brightness(.85) saturate(1); opacity:.72; }
     .deck-card:focus-visible{ outline:2px solid var(--accent); outline-offset:5px; }
     .deck-index{
@@ -1465,7 +1469,7 @@
       <div class="fu">
         <div class="eyebrow"><span class="idx">05</span><span>Unsere Pakete</span></div>
         <h2 class="sec-h2">Wählen Sie Ihr Startpaket</h2>
-        <p class="sec-sub">Drei Einstiegspunkte, ein Ziel: eine Website, die zu Ihnen passt.</p>
+        <p class="sec-sub">Vier Bausteine, ein Ziel: eine Website, die zu Ihnen passt.</p>
       </div>
 
       <div class="deck-stage fu">
@@ -1473,41 +1477,39 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
         <div class="deck" role="list">
-        <button type="button" class="deck-card" data-plan="essential" role="listitem" aria-pressed="false">
+        <button type="button" class="deck-card" data-plan="starter" role="listitem" aria-pressed="false">
           <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
           <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
           <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
           <div class="deck-body">
-            <div class="deck-name">Essential</div>
-            <div class="deck-price">ab 850&nbsp;€</div>
-            <p class="deck-desc">Der perfekte Einstieg für kleine Unternehmen und Selbstständige.</p>
+            <div class="deck-name">Starter</div>
+            <div class="deck-price">499&nbsp;€</div>
+            <p class="deck-desc">Ideal für Selbstständige und kleine Unternehmen.</p>
             <ul class="deck-features">
-              <li>Individuell gestalteter Onepager oder kleine Website</li>
-              <li>Modernes Premium-Design</li>
-              <li>Optimiert für Smartphone, Tablet &amp; Desktop</li>
-              <li>Suchmaschinenfreundlicher Aufbau</li>
-              <li>Schnelle Ladezeiten</li>
-              <li>Persönliche Beratung &amp; individuelle Umsetzung</li>
+              <li>Individuell gestalteter Onepager</li>
+              <li>Modernes Design für Smartphone, Tablet &amp; Desktop</li>
+              <li>Kontaktformular &amp; Google Maps Integration</li>
+              <li>Schnelle Ladezeiten &amp; SEO-Grundoptimierung</li>
+              <li>Persönliches Beratungsgespräch &amp; 1 Feedbackrunde</li>
             </ul>
             <span class="deck-cta">Projekt anfragen</span>
           </div>
         </button>
 
-        <button type="button" class="deck-card" data-plan="business" role="listitem" aria-pressed="false">
+        <button type="button" class="deck-card" data-plan="advanced" role="listitem" aria-pressed="false">
           <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
           <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
           <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
           <div class="deck-body">
-            <div class="deck-name">Business <span class="deck-star" aria-hidden="true">★</span></div>
-            <div class="deck-price">ab 1.590&nbsp;€</div>
-            <p class="deck-desc">Für Unternehmen, die professionell auftreten und wachsen möchten.</p>
+            <div class="deck-name">Advanced</div>
+            <div class="deck-price">799&nbsp;€</div>
+            <p class="deck-desc">Ideal für Unternehmen mit mehreren Leistungen oder Angeboten.</p>
             <ul class="deck-features">
-              <li>Individuell entwickelte Mehrseiten-Website</li>
-              <li>Alles aus Essential</li>
-              <li>Erweiterte SEO-Optimierung</li>
-              <li>Individuelle Animationen &amp; hochwertige Effekte</li>
-              <li>Leistungs-, Referenz- und Unternehmensseiten</li>
-              <li>Conversion-optimierter Seitenaufbau</li>
+              <li>Bis zu 5 individuell gestaltete Unterseiten</li>
+              <li>Professioneller Foto-Service vor Ort &amp; Bildoptimierung</li>
+              <li>Erweiterte SEO- &amp; Performance-Optimierung</li>
+              <li>Individuelles Webdesign mit durchdachter Seitenstruktur</li>
+              <li>2 Feedbackrunden &amp; persönliche Projektbegleitung</li>
             </ul>
             <span class="deck-cta">Projekt anfragen</span>
           </div>
@@ -1519,15 +1521,32 @@
           <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
           <div class="deck-body">
             <div class="deck-name">Premium</div>
-            <div class="deck-price">ab 2.590&nbsp;€</div>
-            <p class="deck-desc">Die individuelle Lösung für besondere Anforderungen.</p>
+            <div class="deck-price">1.199&nbsp;€</div>
+            <p class="deck-desc">Ideal für Unternehmen mit höchsten Ansprüchen an Design und Funktionalität.</p>
             <ul class="deck-features">
-              <li>Alles aus Business</li>
-              <li>Individuelle Funktionen &amp; Webanwendungen</li>
-              <li>Automatisierungen &amp; Schnittstellen</li>
-              <li>KI-Integrationen &amp; Chatbots (optional)</li>
-              <li>Maßgeschneiderte Lösungen für Ihr Unternehmen</li>
-              <li>Priorisierte Betreuung während des Projekts</li>
+              <li>Bis zu 10–15 individuell gestaltete Seiten</li>
+              <li>Individuelles Premium-Webdesign mit hochwertigen Animationen</li>
+              <li>Lizenzierte Premium-Bilder (iStock) inklusive</li>
+              <li>Erweiterte SEO &amp; individuelle Funktionen nach Wunsch</li>
+              <li>Priorisierte Betreuung &amp; mehrere Feedbackrunden</li>
+            </ul>
+            <span class="deck-cta">Projekt anfragen</span>
+          </div>
+        </button>
+
+        <button type="button" class="deck-card" data-plan="support" role="listitem" aria-pressed="false">
+          <span class="deck-index deck-index--tl">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
+          <span class="deck-index deck-index--br">N<img class="deck-index-mark" src="../assets/logo-mark-light.png" alt="" width="537" height="454" loading="lazy"></span>
+          <img class="deck-emblem" src="../assets/logo-mark-light.png" alt="" aria-hidden="true" width="537" height="454" loading="lazy">
+          <div class="deck-body">
+            <div class="deck-name">Wartung &amp; Support</div>
+            <div class="deck-price">29,99&nbsp;€/Monat</div>
+            <ul class="deck-features">
+              <li>Hosting inklusive</li>
+              <li>SSL-Zertifikat &amp; Sicherheitsupdates</li>
+              <li>Regelmäßige Backups</li>
+              <li>Überwachung der Erreichbarkeit</li>
+              <li>Performance-Checks &amp; technische Wartung</li>
             </ul>
             <span class="deck-cta">Projekt anfragen</span>
           </div>
@@ -2560,20 +2579,23 @@
       const prevBtn = document.querySelector('.deck-arrow--prev');
       const nextBtn = document.querySelector('.deck-arrow--next');
       if (!cards.length) return;
-      let selected = 1; // Business startet vorne
+      let selected = 1; // Advanced startet vorne
 
       function layout() {
-        const remaining = cards.map((c, i) => i).filter(i => i !== selected).sort((a, b) => a - b);
+        const n = cards.length;
         cards.forEach((card, i) => {
-          card.classList.remove('is-front', 'is-left', 'is-right');
+          card.classList.remove('is-front', 'is-left', 'is-right', 'is-back');
           card.setAttribute('aria-pressed', 'false');
-          if (i === selected) {
+          const diff = (i - selected + n) % n;
+          if (diff === 0) {
             card.classList.add('is-front');
             card.setAttribute('aria-pressed', 'true');
-          } else if (i === remaining[0]) {
+          } else if (diff === n - 1) {
             card.classList.add('is-left');
-          } else {
+          } else if (diff === 1) {
             card.classList.add('is-right');
+          } else {
+            card.classList.add('is-back');
           }
         });
       }
