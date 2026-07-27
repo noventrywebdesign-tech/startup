@@ -2,7 +2,7 @@
   "name": "Noventry Webdesign",
   "short_name": "Noventry",
   "description": "Individuelle Websites für lokale Unternehmen aus Hemer.",
-  "start_url": "/projekte/index.html",
+  "start_url": "/",
   "display": "browser",
   "background_color": "#000000",
   "theme_color": "#000000",
