@@ -17,31 +17,166 @@
 
   <style>
     :root{
-      --ink:      #0D1728;
-      --slate:    #4C5A70;
-      --muted:    #798A9F;
-      --line:     #DCE4F5;
-      --bg:       #FFFFFF;
-      --bg-soft:  #F1F5FD;
-      --card:     #FFFFFF;
+      --galaxy-bg:
+        radial-gradient(2.15px 2.15px at 20.80% 41.49%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(1.66px 1.66px at 10.73% 10.11%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(2.20px 2.20px at 51.51% 10.07%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.83px 1.83px at 49.76% 35.69%, rgba(255,255,255,0.98), transparent 70%),
+        radial-gradient(2.15px 2.15px at 23.24% 62.89%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(2.29px 2.29px at 65.50% 13.53%, rgba(255,255,255,0.83), transparent 70%),
+        radial-gradient(1.70px 1.70px at 78.79% 7.98%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(2.37px 2.37px at 44.17% 32.71%, rgba(255,255,255,1.00), transparent 70%),
+        radial-gradient(1.67px 1.67px at 52.93% 35.22%, rgba(255,255,255,0.91), transparent 70%),
+        radial-gradient(2.00px 2.00px at 21.70% 1.34%, rgba(255,255,255,0.98), transparent 70%),
+        radial-gradient(2.18px 2.18px at 69.78% 81.39%, rgba(255,255,255,0.82), transparent 70%),
+        radial-gradient(2.13px 2.13px at 26.96% 13.86%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(2.02px 2.02px at 79.25% 49.73%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(2.40px 2.40px at 63.20% 12.20%, rgba(255,255,255,0.91), transparent 70%),
+        radial-gradient(1.51px 1.51px at 35.01% 82.97%, rgba(255,255,255,0.55), transparent 70%),
+        radial-gradient(1.43px 1.43px at 14.40% 55.34%, rgba(255,255,255,0.74), transparent 70%),
+        radial-gradient(1.55px 1.55px at 14.62% 67.62%, rgba(255,255,255,0.90), transparent 70%),
+        radial-gradient(1.48px 1.48px at 82.71% 70.22%, rgba(255,255,255,0.66), transparent 70%),
+        radial-gradient(1.09px 1.09px at 63.53% 5.75%, rgba(255,255,255,0.73), transparent 70%),
+        radial-gradient(1.10px 1.10px at 89.73% 97.44%, rgba(255,255,255,0.84), transparent 70%),
+        radial-gradient(1.26px 1.26px at 74.97% 90.64%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(1.03px 1.03px at 98.22% 24.26%, rgba(255,255,255,0.79), transparent 70%),
+        radial-gradient(1.41px 1.41px at 82.38% 74.91%, rgba(255,255,255,0.75), transparent 70%),
+        radial-gradient(1.28px 1.28px at 88.54% 92.29%, rgba(255,255,255,0.72), transparent 70%),
+        radial-gradient(1.34px 1.34px at 99.78% 41.18%, rgba(255,255,255,0.55), transparent 70%),
+        radial-gradient(1.50px 1.50px at 81.26% 97.01%, rgba(255,255,255,0.59), transparent 70%),
+        radial-gradient(1.28px 1.28px at 78.07% 72.52%, rgba(255,255,255,0.76), transparent 70%),
+        radial-gradient(1.30px 1.30px at 76.30% 40.85%, rgba(255,255,255,0.58), transparent 70%),
+        radial-gradient(1.02px 1.02px at 99.19% 93.24%, rgba(255,255,255,0.72), transparent 70%),
+        radial-gradient(1.05px 1.05px at 61.43% 1.28%, rgba(255,255,255,0.57), transparent 70%),
+        radial-gradient(1.58px 1.58px at 6.05% 7.97%, rgba(255,255,255,0.66), transparent 70%),
+        radial-gradient(1.07px 1.07px at 56.39% 3.18%, rgba(255,255,255,0.71), transparent 70%),
+        radial-gradient(1.11px 1.11px at 41.50% 85.41%, rgba(255,255,255,0.63), transparent 70%),
+        radial-gradient(1.53px 1.53px at 98.65% 51.84%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.03px 1.03px at 43.31% 90.76%, rgba(255,255,255,0.84), transparent 70%),
+        radial-gradient(1.49px 1.49px at 50.66% 69.87%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(1.31px 1.31px at 51.06% 89.28%, rgba(255,255,255,0.69), transparent 70%),
+        radial-gradient(1.18px 1.18px at 48.19% 44.34%, rgba(255,255,255,0.61), transparent 70%),
+        radial-gradient(1.29px 1.29px at 39.68% 96.93%, rgba(255,255,255,0.58), transparent 70%),
+        radial-gradient(1.42px 1.42px at 69.27% 71.94%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(1.43px 1.43px at 26.26% 67.63%, rgba(255,255,255,0.74), transparent 70%),
+        radial-gradient(1.47px 1.47px at 27.19% 51.01%, rgba(255,255,255,0.52), transparent 70%),
+        radial-gradient(1.07px 1.07px at 23.64% 72.17%, rgba(255,255,255,0.72), transparent 70%),
+        radial-gradient(1.36px 1.36px at 33.84% 83.15%, rgba(255,255,255,0.54), transparent 70%),
+        radial-gradient(1.33px 1.33px at 36.40% 98.98%, rgba(255,255,255,0.56), transparent 70%),
+        radial-gradient(1.37px 1.37px at 46.07% 49.81%, rgba(255,255,255,0.73), transparent 70%),
+        radial-gradient(1.41px 1.41px at 1.19% 23.22%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.02px 1.02px at 3.79% 39.66%, rgba(255,255,255,0.81), transparent 70%),
+        radial-gradient(1.11px 1.11px at 27.57% 36.76%, rgba(255,255,255,0.77), transparent 70%),
+        radial-gradient(1.08px 1.08px at 73.47% 78.61%, rgba(255,255,255,0.82), transparent 70%),
+        radial-gradient(1.01px 1.01px at 23.11% 80.48%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(1.24px 1.24px at 44.36% 83.92%, rgba(255,255,255,0.74), transparent 70%),
+        radial-gradient(1.58px 1.58px at 47.15% 99.29%, rgba(255,255,255,0.53), transparent 70%),
+        radial-gradient(1.42px 1.42px at 34.36% 90.97%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(0.80px 0.80px at 54.50% 14.96%, rgba(255,255,255,0.42), transparent 70%),
+        radial-gradient(0.87px 0.87px at 77.36% 54.76%, rgba(255,255,255,0.63), transparent 70%),
+        radial-gradient(0.60px 0.60px at 65.75% 51.10%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.68px 0.68px at 73.18% 91.30%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.68px 0.68px at 91.99% 19.61%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.50px 0.50px at 44.65% 50.39%, rgba(255,255,255,0.56), transparent 70%),
+        radial-gradient(0.82px 0.82px at 36.05% 47.13%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.87px 0.87px at 63.15% 93.02%, rgba(255,255,255,0.37), transparent 70%),
+        radial-gradient(0.99px 0.99px at 60.34% 78.90%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.85px 0.85px at 92.25% 61.48%, rgba(255,255,255,0.59), transparent 70%),
+        radial-gradient(0.93px 0.93px at 97.13% 2.48%, rgba(255,255,255,0.53), transparent 70%),
+        radial-gradient(0.89px 0.89px at 5.57% 90.45%, rgba(255,255,255,0.69), transparent 70%),
+        radial-gradient(0.72px 0.72px at 66.24% 59.57%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.97px 0.97px at 96.96% 56.80%, rgba(255,255,255,0.46), transparent 70%),
+        radial-gradient(0.95px 0.95px at 35.31% 1.42%, rgba(255,255,255,0.43), transparent 70%),
+        radial-gradient(0.75px 0.75px at 92.14% 53.16%, rgba(255,255,255,0.54), transparent 70%),
+        radial-gradient(0.79px 0.79px at 10.31% 32.96%, rgba(255,255,255,0.35), transparent 70%),
+        radial-gradient(0.73px 0.73px at 71.88% 99.49%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(0.54px 0.54px at 84.46% 89.51%, rgba(255,255,255,0.57), transparent 70%),
+        radial-gradient(0.58px 0.58px at 78.27% 44.04%, rgba(255,255,255,0.48), transparent 70%),
+        radial-gradient(0.88px 0.88px at 75.73% 71.38%, rgba(255,255,255,0.62), transparent 70%),
+        radial-gradient(0.59px 0.59px at 90.24% 24.53%, rgba(255,255,255,0.36), transparent 70%),
+        radial-gradient(0.84px 0.84px at 27.62% 77.24%, rgba(255,255,255,0.49), transparent 70%),
+        radial-gradient(0.56px 0.56px at 72.21% 85.80%, rgba(255,255,255,0.53), transparent 70%),
+        radial-gradient(0.87px 0.87px at 96.55% 74.38%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.69px 0.69px at 36.09% 16.33%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.75px 0.75px at 56.87% 84.69%, rgba(255,255,255,0.36), transparent 70%),
+        radial-gradient(0.90px 0.90px at 59.09% 21.33%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(0.51px 0.51px at 2.40% 33.80%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.55px 0.55px at 68.65% 21.11%, rgba(255,255,255,0.35), transparent 70%),
+        radial-gradient(0.92px 0.92px at 32.72% 65.94%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.84px 0.84px at 91.30% 13.12%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(0.86px 0.86px at 68.42% 28.98%, rgba(255,255,255,0.62), transparent 70%),
+        radial-gradient(0.83px 0.83px at 69.21% 53.23%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.68px 0.68px at 94.26% 92.02%, rgba(255,255,255,0.69), transparent 70%),
+        radial-gradient(0.80px 0.80px at 21.75% 49.23%, rgba(255,255,255,0.43), transparent 70%),
+        radial-gradient(0.68px 0.68px at 30.60% 26.35%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.84px 0.84px at 21.11% 73.13%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.78px 0.78px at 37.31% 67.27%, rgba(255,255,255,0.60), transparent 70%),
+        radial-gradient(0.62px 0.62px at 59.12% 20.48%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.90px 0.90px at 32.22% 32.59%, rgba(255,255,255,0.42), transparent 70%),
+        radial-gradient(0.55px 0.55px at 99.31% 16.87%, rgba(255,255,255,0.61), transparent 70%),
+        radial-gradient(0.89px 0.89px at 44.82% 29.73%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.66px 0.66px at 20.48% 72.52%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.90px 0.90px at 63.11% 70.48%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.96px 0.96px at 39.49% 84.22%, rgba(255,255,255,0.54), transparent 70%),
+        radial-gradient(0.77px 0.77px at 6.56% 38.28%, rgba(255,255,255,0.48), transparent 70%),
+        radial-gradient(0.80px 0.80px at 99.32% 65.44%, rgba(255,255,255,0.52), transparent 70%),
+        radial-gradient(0.81px 0.81px at 65.72% 78.90%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(0.50px 0.50px at 33.02% 7.00%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.98px 0.98px at 17.37% 51.52%, rgba(255,255,255,0.55), transparent 70%),
+        radial-gradient(0.66px 0.66px at 38.37% 26.92%, rgba(255,255,255,0.38), transparent 70%),
+        radial-gradient(0.87px 0.87px at 21.06% 79.61%, rgba(255,255,255,0.67), transparent 70%),
+        radial-gradient(0.59px 0.59px at 66.39% 57.14%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.97px 0.97px at 13.66% 75.31%, rgba(255,255,255,0.64), transparent 70%),
+        radial-gradient(0.72px 0.72px at 21.17% 41.71%, rgba(255,255,255,0.61), transparent 70%),
+        radial-gradient(0.95px 0.95px at 51.41% 4.04%, rgba(255,255,255,0.58), transparent 70%),
+        radial-gradient(0.51px 0.51px at 39.84% 35.17%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.94px 0.94px at 22.59% 20.21%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.64px 0.64px at 80.59% 36.73%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.61px 0.61px at 79.12% 6.95%, rgba(255,255,255,0.44), transparent 70%),
+        radial-gradient(0.74px 0.74px at 92.04% 66.06%, rgba(255,255,255,0.59), transparent 70%),
+        radial-gradient(0.67px 0.67px at 2.92% 45.48%, rgba(255,255,255,0.68), transparent 70%),
+        radial-gradient(0.66px 0.66px at 85.14% 16.49%, rgba(255,255,255,0.45), transparent 70%),
+        radial-gradient(0.53px 0.53px at 90.61% 42.72%, rgba(255,255,255,0.51), transparent 70%),
+        radial-gradient(0.89px 0.89px at 13.40% 81.92%, rgba(255,255,255,0.47), transparent 70%),
+        radial-gradient(0.62px 0.62px at 43.72% 59.08%, rgba(255,255,255,0.65), transparent 70%),
+        radial-gradient(0.79px 0.79px at 98.06% 88.84%, rgba(255,255,255,0.50), transparent 70%),
+        radial-gradient(0.64px 0.64px at 59.68% 53.52%, rgba(255,255,255,0.49), transparent 70%),
+        radial-gradient(0.96px 0.96px at 65.50% 80.06%, rgba(255,255,255,0.63), transparent 70%),
+        radial-gradient(1000px 750px at 88% 4%, rgba(46,91,255,.08), transparent 68%),
+        radial-gradient(900px 700px at 6% 100%, rgba(24,52,120,.10), transparent 66%),
+        radial-gradient(650px 520px at 48% 52%, rgba(190,205,230,.05), transparent 70%),
+        linear-gradient(160deg, #070914 0%, #000 68%);
+      --void:     #000000;
+      --panel:    #0A1220;
+      --panel-2:  #0F1A2C;
+      --ink:      #F4F7FC;
+      --slate:    #A9B8D0;
+      --muted:    #7E8CA0;
+      --line:     rgba(255,255,255,.12);
+      --line-soft: rgba(255,255,255,.07);
+      --bg:       #000000;
+      --bg-soft:  rgba(255,255,255,.05);
+      --card:     #0A1220;
       --accent:   #2E5BFF;
-      --accent-soft: #E8EEFF;
-      --grid-line: #F0F0F0;
-      --glow: #D5C5FF;
+      --accent-2: #6E8CFF;
+      --accent-soft: rgba(46,91,255,.16);
+      --star:     #EAF1FF;
+      --mono:     'Space Mono', ui-monospace, monospace;
       --radius:   14px;
-      --shadow:   0 1px 2px rgba(16,28,46,.06), 0 8px 32px rgba(16,28,46,.09);
+      --shadow:   0 20px 60px rgba(0,0,0,.55);
     }
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
       font-family:'Inter', system-ui, sans-serif;
       font-size:16px; line-height:1.7;
-      color:var(--ink); background:var(--bg);
-      background-image:
-        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-      background-size:6rem 4rem;
+      color:var(--ink); background-color:var(--void);
       -webkit-font-smoothing:antialiased;
+    }
+    body::before{
+      content:''; position:fixed; inset:0; z-index:-1;
+      background-color:var(--void); background-image:var(--galaxy-bg);
+      pointer-events:none;
     }
     h1,h2,.q{ font-family:'Questrial', sans-serif; font-weight:400; line-height:1.15; }
     a{ color:inherit; text-decoration:none; }
@@ -72,25 +207,17 @@
     .nav-back svg{ width:15px; height:15px; }
 
     /* ── Seiteninhalt ── */
-    header.wrap{
-      position:relative;
-      background-image: radial-gradient(560px 380px at 90% 0%, var(--glow), transparent 70%);
-      background-repeat:no-repeat;
-    }
+    header.wrap{ position:relative; }
     .page-header{ padding:72px 0 48px; border-bottom:1px solid var(--line); position:relative; }
     .eyebrow{
       display:inline-flex; align-items:center; gap:8px;
       font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
-      color:var(--accent); margin-bottom:18px;
+      color:var(--accent-2); margin-bottom:18px;
     }
     .eyebrow::before{ content:''; width:22px; height:2px; background:var(--accent); }
     .page-header h1{ font-size:clamp(2rem, 5vw, 2.8rem); }
 
-    main.wrap{
-      position:relative;
-      background-image: radial-gradient(560px 380px at 4% 100%, var(--glow), transparent 70%);
-      background-repeat:no-repeat;
-    }
+    main.wrap{ position:relative; }
     .legal-body{ padding:56px 0 100px; display:flex; flex-direction:column; gap:40px; position:relative; }
     .legal-section h2{
       font-family:'Inter'; font-size:.76rem; font-weight:700; letter-spacing:.1em;
@@ -98,11 +225,11 @@
       padding-bottom:10px; border-bottom:1px solid var(--line);
     }
     .legal-card{
-      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-      box-shadow:0 1px 3px rgba(13,23,40,.05); padding:30px 32px;
+      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:30px 32px;
     }
     .legal-card address{ font-style:normal; line-height:1.9; }
-    .legal-card a{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+    .legal-card a{ color:var(--accent-2); text-decoration:underline; text-underline-offset:3px; }
     .legal-card p{ color:var(--slate); font-size:.96rem; line-height:1.85; }
     .legal-card p + p{ margin-top:14px; }
     .legal-card ul{ color:var(--slate); font-size:.96rem; line-height:1.85; padding-left:20px; margin-top:8px; }
@@ -111,10 +238,10 @@
     .legal-card h3:first-child{ margin-top:0; }
 
     /* ── Footer (schlank) ── */
-    .footer-simple{ background:var(--ink); color:#B9C4D4; padding:28px 0; }
+    .footer-simple{ background:var(--panel); border-top:1px solid var(--line-soft); color:var(--slate); padding:28px 0; }
     .footer-simple .wrap{
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px; flex-wrap:wrap; font-size:.82rem; color:#7E8CA0;
+      gap:16px; flex-wrap:wrap; font-size:.82rem; color:var(--muted);
     }
     .footer-simple a{ transition:color .15s; }
     .footer-simple a:hover{ color:#fff; }
